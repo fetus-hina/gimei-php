@@ -18,14 +18,14 @@
         "php":  ">=5.4.0",
         "ext-pcre": "*",
         "ext-mbstring": "*",
-        "ext-intl": "*",
-        "symfony/yaml": "^2.7"
+        "ext-intl": "*"
     },
     "require-dev": {
         "codeclimate/php-test-reporter": "dev-master",
         "phpmd/phpmd": "^2.2",
         "phpunit/phpunit": "^4.7",
-        "squizlabs/php_codesniffer": "^2.3"
+        "squizlabs/php_codesniffer": "^2.3",
+        "symfony/yaml": "^2.7"
     },
     "autoload": {
         "psr-4": {

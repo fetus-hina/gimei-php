@@ -1,12 +1,11 @@
 <?php
 namespace jp3cki\gimei\name;
 
-use Symfony\Component\Yaml\Yaml;
 use jp3cki\gimei\Exception;
 
 class Factory
 {
-    const YAML_REL_PATH = '../../data/names.yml';
+    const JSON_REL_PATH = '../../data/names.json';
     
     private static $data = null;
 
@@ -44,20 +43,20 @@ class Factory
             'lastName' => []
         ];
 
-        $yamlPath = __DIR__ . '/' . self::YAML_REL_PATH;
-        if (!$yamlPath) {
-            throw new Exception('Could not find ' . basename($yamlPath));
+        $jsonPath = __DIR__ . '/' . self::JSON_REL_PATH;
+        if (!$jsonPath) {
+            throw new Exception('Could not find ' . basename($jsonPath));
         }
 
-        $yaml = Yaml::parse(file_get_contents($yamlPath), true, false, false);
-        if (!isset($yaml['first_name']) || !isset($yaml['last_name'])) {
-            throw new Exception('Broken yaml: ' . basename($yamlPath));
+        $json = json_decode(file_get_contents($jsonPath), true);
+        if (!isset($json['first_name']) || !isset($json['last_name'])) {
+            throw new Exception('Broken json: ' . basename($jsonPath));
         }
 
         foreach (['male', 'female'] as $genderKey) {
-            $data['firstName'][$genderKey] = $yaml['first_name'][$genderKey];
+            $data['firstName'][$genderKey] = $json['first_name'][$genderKey];
         }
-        $data['lastName'] = $yaml['last_name'];
+        $data['lastName'] = $json['last_name'];
         
         self::$data = $data;
     }
