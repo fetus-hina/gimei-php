@@ -1,6 +1,8 @@
 UNDER CONSTRUCTION
 ==================
 
+[![Build Status](https://travis-ci.org/fetus-hina/gimei-php.svg?branch=master)](https://travis-ci.org/fetus-hina/gimei-php)
+
 SEE ALSO
 --------
 
