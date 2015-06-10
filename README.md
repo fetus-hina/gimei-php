@@ -2,6 +2,9 @@ UNDER CONSTRUCTION
 ==================
 
 [![Build Status](https://travis-ci.org/fetus-hina/gimei-php.svg?branch=master)](https://travis-ci.org/fetus-hina/gimei-php)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/fetus-hina/gimei-php/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/fetus-hina/gimei-php/?branch=master)
+[![Code Climate](https://codeclimate.com/github/fetus-hina/gimei-php/badges/gpa.svg)](https://codeclimate.com/github/fetus-hina/gimei-php)
+[![Test Coverage](https://codeclimate.com/github/fetus-hina/gimei-php/badges/coverage.svg)](https://codeclimate.com/github/fetus-hina/gimei-php/coverage)
 
 SEE ALSO
 --------

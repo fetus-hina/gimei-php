@@ -1,3 +1,4 @@
 vendor
 composer.phar
 clover.xml
+update-coverage.sh
