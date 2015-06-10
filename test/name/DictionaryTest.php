@@ -21,7 +21,8 @@ class DictionaryTest extends TestCase
         new Dictionary(__DIR__ . '/dictionary-test-completely-broken.json');
     }
 
-    // JSON としては正しいがデータファイルとしては壊れているものを読むと例外が飛ぶはず
+    // JSON としては正しいがデータファイルとしては壊れているものを
+    // 読むと例外が飛ぶはず
     public function testBroken()
     {
         $this->setExpectedException('jp3cki\gimei\Exception');
