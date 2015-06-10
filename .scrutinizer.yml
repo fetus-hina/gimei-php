@@ -1,0 +1,14 @@
+imports:
+    - php
+
+checks:
+    php: true
+
+filter:
+    excluded_paths:
+        - 'data/*'
+        - 'test/*'
+
+tools:
+    php_sim: false
+    php_cpd: false
