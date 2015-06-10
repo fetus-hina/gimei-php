@@ -1,0 +1,36 @@
+{
+    "name": "jp3cki/gimei",
+    "type": "library",
+    "description": "random Japanese name and address generator",
+    "keywords": ["gimei"],
+    "license": "MIT",
+    "version": "0.0.1",
+    "authors": [
+        {
+            "name": "AIZAWA Hina",
+            "email": "hina@bouhime.com"
+        },
+        {
+            "name": "willnet"
+        }
+    ],
+    "require": {
+        "php":  ">=5.4.0",
+        "ext-pcre": "*",
+        "ext-mbstring": "*",
+        "ext-intl": "*",
+        "symfony/yaml": "^2.7"
+    },
+    "require-dev": {
+        "codeclimate/php-test-reporter": "dev-master",
+        "phpmd/phpmd": "^2.2",
+        "phpunit/phpunit": "^4.7",
+        "squizlabs/php_codesniffer": "^2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "jp3cki\\gimei\\": "src",
+            "jp3cki\\gimei\\test\\": "test"
+        }
+    }
+}

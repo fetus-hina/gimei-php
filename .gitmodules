@@ -1,0 +1,3 @@
+[submodule "third-party/gimei-original"]
+	path = third-party/gimei-original
+	url = https://github.com/willnet/gimei.git
