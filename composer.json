@@ -4,7 +4,7 @@
     "description": "random Japanese name and address generator",
     "keywords": ["gimei"],
     "license": "MIT",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "authors": [
         {
             "name": "AIZAWA Hina",
@@ -16,9 +16,7 @@
     ],
     "require": {
         "php":  ">=5.4.0",
-        "ext-pcre": "*",
-        "ext-mbstring": "*",
-        "ext-intl": "*"
+        "ext-json": "*"
     },
     "require-dev": {
         "codeclimate/php-test-reporter": "dev-master",
