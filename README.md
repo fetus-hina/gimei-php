@@ -8,6 +8,8 @@ Gimei-PHP
 
 gimei-php は日本人の名前や、日本の住所をランダムに返すライブラリ [gimei](https://github.com/willnet/gimei) を PHP 用ライブラリにポーティングしたものです。
 
+このライブラリはあとほんの少しの期間だけ開発中です。
+
 本家
 ----
 
@@ -142,11 +144,22 @@ CONTRIBUTING
 
 1. フォークします
 2. feature branch を作成します (`git checkout -b my-new-feature`) ※master ブランチで作業しないでください。
-3. ソースとテストを変更します。
-4. テストとコーディングチェックを行います。 (`make test` `make check-style`)
-5. commit します (`git commit -m 'Add Feature' -a`)
-6. push します (`git push origin my-new-feature`)
-7. pull request を作成します。
+3. 依存関係の準備をします。(`make init`)
+4. ソースとテストを変更します。
+5. テストとコーディングチェックを行います。
+    - `make test`
+    - `make check-style`
+6. commit します (`git commit -m 'Add Feature' -a`)
+7. push します (`git push origin my-new-feature`)
+8. pull request を作成します。
+
+
+名前や住所のデータを `gimei` に追従するには、
+
+1. `third-party/gimei-original` で `git pull origin master` する等して更新を取り込んでください。
+2. `util/convert-data.php` を実行します。
+
+とすればたぶん大丈夫です。
 
 
 LICENSE
