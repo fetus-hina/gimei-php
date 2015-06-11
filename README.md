@@ -18,6 +18,13 @@ https://github.com/willnet/gimei
 使い方
 ------
 
+### 必須環境 ###
+
+- PHP 5.4 以上
+    - PHP 7.0 や HHVM でも動きます
+- `json` 拡張モジュール
+
+
 ### 準備 ###
 
 1. まだ設定していなければ [Composer](https://getcomposer.org/) を使えるようにします。
