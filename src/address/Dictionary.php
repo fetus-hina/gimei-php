@@ -1,19 +1,56 @@
 <?php
+/**
+ * @author AIZAWA Hina <hina@bouhime.com>
+ * @copyright 2015 AIZAWA Hina <hina@bouhime.com>
+ * @license https://github.com/fetus-hina/gimei-php/blob/master/LICENSE MIT
+ */
+
 namespace jp3cki\gimei\address;
 
 use jp3cki\gimei\Exception;
 
+/**
+ * データファイルを読み込み保持するクラス
+ *
+ * @property-read array prefectures
+ * @property-read array cities
+ * @property-read array towns
+ */
 class Dictionary
 {
+    /**
+     * 都道府県のリスト
+     * @var string[][]
+     */
     private $prefectures;
+    
+    /**
+     * 市区町村のリスト
+     * @var string[][]
+     */
     private $cities;
+
+    /**
+     * 大字等のリスト
+     * @var string[][]
+     */
     private $towns;
 
+    /**
+     * コンストラクタ
+     *
+     * @param string $jsonPath データファイルのパス
+     */
     public function __construct($jsonPath)
     {
         $this->load($jsonPath);
     }
 
+    /**
+     * 都道府県をランダムに選択して返す
+     *
+     * @return string[]
+     */
     public function getOneOfPrefecture()
     {
         return $this->prefectures[
@@ -21,6 +58,11 @@ class Dictionary
         ];
     }
 
+    /**
+     * 市区町村をランダムに選択して返す
+     *
+     * @return string[]
+     */
     public function getOneOfCity()
     {
         return $this->cities[
@@ -28,6 +70,11 @@ class Dictionary
         ];
     }
 
+    /**
+     * 大字等をランダムに選択して返す
+     *
+     * @return string[]
+     */
     public function getOneOfTown()
     {
         return $this->towns[
@@ -35,6 +82,11 @@ class Dictionary
         ];
     }
 
+    /**
+     * ファイルを読み込む
+     *
+     * @param string $jsonPath ファイルパス
+     */
     private function load($jsonPath)
     {
         if (!file_exists($jsonPath)) {

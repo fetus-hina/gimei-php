@@ -19,6 +19,7 @@
         "ext-json": "*"
     },
     "require-dev": {
+        "apigen/apigen": "^4.1",
         "codeclimate/php-test-reporter": "dev-master",
         "phpmd/phpmd": "^2.2",
         "phpunit/phpunit": "^4.7",

@@ -1,19 +1,57 @@
 <?php
+/**
+ * @author AIZAWA Hina <hina@bouhime.com>
+ * @copyright 2015 AIZAWA Hina <hina@bouhime.com>
+ * @license https://github.com/fetus-hina/gimei-php/blob/master/LICENSE MIT
+ */
+
 namespace jp3cki\gimei\name;
 
 use jp3cki\gimei\Exception;
 
+/**
+ * データファイルを読み込み保持するクラス
+ *
+ * @property-read array prefectures
+ * @property-read array cities
+ * @property-read array towns
+ */
 class Dictionary
 {
+    /**
+     * 男性名のリスト
+     * @var string[][]
+     */
     private $maleFirstNames;
+
+    /**
+     * 女性名のリスト
+     * @var string[][]
+     */
     private $femaleFirstNames;
+
+    /**
+     * 名字のリスト
+     * @var string[][]
+     */
     private $lastNames;
 
+    /**
+     * コンストラクタ
+     *
+     * @param string $jsonPath データファイルのパス
+     */
     public function __construct($jsonPath)
     {
         $this->load($jsonPath);
     }
 
+    /**
+     * 名前をランダムに選択して返す
+     *
+     * @param mixed Gender::MALE | Gender::FEMALE 選択する性
+     * @return string[]
+     */
     public function getOneOfFirstName($gender)
     {
         if ($gender === Gender::MALE) {
@@ -28,6 +66,11 @@ class Dictionary
         throw new Exception('Invalid gender: ' . $gender);
     }
 
+    /**
+     * 名字をランダムに選択して返す
+     *
+     * @return string[]
+     */
     public function getOneOfLastName()
     {
         return $this->lastNames[
@@ -35,6 +78,11 @@ class Dictionary
         ];
     }
 
+    /**
+     * ファイルを読み込む
+     *
+     * @param string $jsonPath ファイルパス
+     */
     private function load($jsonPath)
     {
         if (!file_exists($jsonPath)) {
