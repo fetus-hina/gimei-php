@@ -44,13 +44,13 @@ https://github.com/willnet/gimei
     - 開発時にのみ使用し、本番では使用しない場合
         
         ```sh
-        php composer.phar require --dev jp3cki/gimei-php
+        php composer.phar require --dev jp3cki/gimei
         ```
 
     - 本番でも使用する場合
 
         ```sh
-        php composer.phar require jp3cki/gimei-php
+        php composer.phar require jp3cki/gimei
         ```
 
 4. これで利用の準備が整いました。
