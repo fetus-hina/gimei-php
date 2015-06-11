@@ -51,4 +51,10 @@ class GimeiTest extends TestCase
         $this->assertTrue($person->isFemale());
         $this->assertFalse($person->isMale());
     }
+
+    public function testGenerateAddressReturnsAnAddress()
+    {
+        $address = Gimei::generateAddress();
+        $this->assertInstanceOf('jp3cki\gimei\address\Address', $address);
+    }
 }
