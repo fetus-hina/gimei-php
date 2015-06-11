@@ -1,6 +1,8 @@
 Gimei-PHP
 =========
 
+[![License](https://poser.pugx.org/jp3cki/gimei/license)](https://packagist.org/packages/jp3cki/gimei)
+[![Latest Stable Version](https://poser.pugx.org/jp3cki/gimei/v/stable)](https://packagist.org/packages/jp3cki/gimei)
 [![Build Status](https://travis-ci.org/fetus-hina/gimei-php.svg?branch=master)](https://travis-ci.org/fetus-hina/gimei-php)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/fetus-hina/gimei-php/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/fetus-hina/gimei-php/?branch=master)
 [![Code Climate](https://codeclimate.com/github/fetus-hina/gimei-php/badges/gpa.svg)](https://codeclimate.com/github/fetus-hina/gimei-php)
