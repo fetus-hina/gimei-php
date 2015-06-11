@@ -1,6 +1,6 @@
 all: init
 
-init: install-composer depends-install install-third-party data/names.yml data/addresses.yml
+init: install-composer depends-install install-third-party
 
 install-composer: composer.phar
 
@@ -21,7 +21,6 @@ clover.xml:
 	vendor/bin/phpunit --coverage-clover=clover.xml
 
 check-style:
-	# vendor/bin/phpmd src text codesize,design,naming,unusedcode
 	vendor/bin/phpcs --standard=PSR2 src test
 
 fix-style:
@@ -32,12 +31,6 @@ clean:
 
 composer.phar:
 	curl -sS https://getcomposer.org/installer | php
-
-data/names.yml: install-third-party
-	cp third-party/gimei-original/lib/data/names.yml data/names.yml
-
-data/addresses.yml: install-third-party
-	cp third-party/gimei-original/lib/data/addresses.yml data/addresses.yml
 
 FORCE:
 
