@@ -5,6 +5,7 @@ languages:
     Python: true
 
 exclude_paths:
+    - "apidoc/*"
     - "data/*"
     - "test/*"
     - "third-party/*"
