@@ -21,10 +21,10 @@ clover.xml:
 	vendor/bin/phpunit --coverage-clover=clover.xml
 
 check-style:
-	vendor/bin/phpcs --standard=PSR2 src test
+	vendor/bin/phpcs --standard=PSR2 --encoding=UTF-8 src test
 
 fix-style:
-	vendor/bin/phpcbf --standard=PSR2 src test
+	vendor/bin/phpcbf --standard=PSR2 --encoding=UTF-8 src test
 
 clean:
 	rm -rf vendor composer.phar clover.xml
