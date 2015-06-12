@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class jp3cki\gimei\name\Person</title>
+
+	<link rel="stylesheet" href="resources/bootstrap.min.css?973e37a8502921d56bc02bb55321f45b072b6f71">
+	<link rel="stylesheet" href="resources/style.css?a2b5efb503881470385230f40f9bcc3c94d665e7">
+
+</head>
+
+<body>
+	<nav id="navigation" class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a href="index.html" class="navbar-brand">Overview</a>
+			</div>
+			<div class="collapse navbar-collapse">
+
+                <form id="search" class="navbar-form navbar-left" role="search">
+                    <input type="hidden" name="cx" value="">
+                    <input type="hidden" name="ie" value="UTF-8">
+                    <div class="form-group">
+                        <input type="text" name="q" class="search-query form-control" placeholder="Search">
+					</div>
+				</form>
+
+				<ul class="nav navbar-nav">
+					<li>
+						<a href="namespace-jp3cki.gimei.name.html" title="Summary of jp3cki\gimei\name"><span>Namespace</span></a>
+					</li>
+					<li class="active">
+<span>Class</span>					</li>
+
+					<li class="divider-vertical"></li>
+
+					<li>
+						<a href="tree.html" title="Tree view of classes, interfaces, traits and exceptions"><span>Tree</span></a>
+					</li>
+
+						<li>
+							<a href="annotation-group-todo.html" title="List of elements with todo annotation">
+								<span>Todo</span>
+							</a>
+						</li>
+
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div id="left">
+	<div id="menu">
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+					<li class="active">
+						<a href="namespace-jp3cki.html">
+							jp3cki<span></span>
+						</a>
+							<ul>
+					<li class="active">
+						<a href="namespace-jp3cki.gimei.html">
+							gimei<span></span>
+						</a>
+							<ul>
+					<li>
+						<a href="namespace-jp3cki.gimei.address.html">
+							address						</a>
+							</li>
+					<li class="active">
+						<a href="namespace-jp3cki.gimei.name.html">
+							name						</a>
+							</li>
+								</ul></li></ul></li>
+			</ul>
+		</div>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-jp3cki.gimei.name.Dictionary.html">Dictionary</a></li>
+				<li><a href="class-jp3cki.gimei.name.Factory.html">Factory</a></li>
+				<li><a href="class-jp3cki.gimei.name.Gender.html">Gender</a></li>
+				<li><a href="class-jp3cki.gimei.name.NameUnit.html">NameUnit</a></li>
+				<li class="active"><a href="class-jp3cki.gimei.name.Person.html">Person</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+	<div id="rightInner">
+<div id="content" class="class">
+	<h1>Class Person</h1>
+
+
+	<div class="description">
+	<p>（偽名の）ある人を表すクラス</p>
+
+<p>名字・名前の漢字・かな・カナ表記と性別を保持する</p>
+	</div>
+
+
+
+
+
+
+
+
+
+	<div class="alert alert-info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-jp3cki.html">jp3cki</a>\<a href="namespace-jp3cki.gimei.html">gimei</a>\<a href="namespace-jp3cki.gimei.name.html">name</a><br>
+		
+
+			<b>Located at</b> <a href="source-class-jp3cki.gimei.name.Person.html#10-185" title="Go to source code">name/Person.php</a>
+		<br>
+	</div>
+
+
+
+		<div class="panel panel-default">
+			<div class="panel-heading"><h2>Methods summary</h2></div>
+			<table class="summary table table-bordered table-striped methods" id="methods">
+		<tr data-order="__construct" id="___construct">
+
+			<td class="attributes"><code>
+				 public 
+				
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#___construct">#</a>
+			<code><a href="source-class-jp3cki.gimei.name.Person.html#40-52" title="Go to source code">__construct</a>( <span><code><a href="class-jp3cki.gimei.name.NameUnit.html">jp3cki\gimei\name\NameUnit</a></code> <var>$firstName</var></span>, <span><code><a href="class-jp3cki.gimei.name.NameUnit.html">jp3cki\gimei\name\NameUnit</a></code> <var>$lastName</var></span>, <span>boolean <var>$isMale</var></span> )</code>
+
+			<div class="description short">
+				<p>コンストラクタ</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>コンストラクタ</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$firstName</var></dt>
+						<dd>名前</dd>
+						<dt><var>$lastName</var></dt>
+						<dd>名字</dd>
+						<dt><var>$isMale</var></dt>
+						<dd>男性ならtrue、女性ならfalse</dd>
+					</dl></div>
+
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="getKanji" id="_getKanji">
+
+			<td class="attributes"><code>
+				 public 
+				string
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_getKanji">#</a>
+			<code><a href="source-class-jp3cki.gimei.name.Person.html#54-62" title="Go to source code">getKanji</a>( )</code>
+
+			<div class="description short">
+				<p>漢字表記を取得</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>漢字表記を取得</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						string
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="getHiragana" id="_getHiragana">
+
+			<td class="attributes"><code>
+				 public 
+				string
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_getHiragana">#</a>
+			<code><a href="source-class-jp3cki.gimei.name.Person.html#64-73" title="Go to source code">getHiragana</a>( )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				<p>かな表記を取得</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						string
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="getKatakana" id="_getKatakana">
+
+			<td class="attributes"><code>
+				 public 
+				string
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_getKatakana">#</a>
+			<code><a href="source-class-jp3cki.gimei.name.Person.html#75-83" title="Go to source code">getKatakana</a>( )</code>
+
+			<div class="description short">
+				<p>カナ表記を取得</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>カナ表記を取得</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						string
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="isMale" id="_isMale">
+
+			<td class="attributes"><code>
+				 public 
+				boolean
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_isMale">#</a>
+			<code><a href="source-class-jp3cki.gimei.name.Person.html#85-93" title="Go to source code">isMale</a>( )</code>
+
+			<div class="description short">
+				<p>性別を取得。男性なら true</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>性別を取得。男性なら true</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						boolean
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="isFemale" id="_isFemale">
+
+			<td class="attributes"><code>
+				 public 
+				boolean
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_isFemale">#</a>
+			<code><a href="source-class-jp3cki.gimei.name.Person.html#95-103" title="Go to source code">isFemale</a>( )</code>
+
+			<div class="description short">
+				<p>性別を取得。女性なら true</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>性別を取得。女性なら true</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						boolean
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="getFirstName" id="_getFirstName">
+
+			<td class="attributes"><code>
+				 public 
+				<code><a href="class-jp3cki.gimei.name.NameUnit.html">jp3cki\gimei\name\NameUnit</a></code>
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_getFirstName">#</a>
+			<code><a href="source-class-jp3cki.gimei.name.Person.html#105-113" title="Go to source code">getFirstName</a>( )</code>
+
+			<div class="description short">
+				<p>名前を取得</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>名前を取得</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						<code><a href="class-jp3cki.gimei.name.NameUnit.html">jp3cki\gimei\name\NameUnit</a></code>
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="getLastName" id="_getLastName">
+
+			<td class="attributes"><code>
+				 public 
+				<code><a href="class-jp3cki.gimei.name.NameUnit.html">jp3cki\gimei\name\NameUnit</a></code>
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_getLastName">#</a>
+			<code><a href="source-class-jp3cki.gimei.name.Person.html#115-123" title="Go to source code">getLastName</a>( )</code>
+
+			<div class="description short">
+				<p>名字を取得</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>名字を取得</p>
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						<code><a href="class-jp3cki.gimei.name.NameUnit.html">jp3cki\gimei\name\NameUnit</a></code>
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="__toString" id="___toString">
+
+			<td class="attributes"><code>
+				 public 
+				string
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#___toString">#</a>
+			<code><a href="source-class-jp3cki.gimei.name.Person.html#125-132" title="Go to source code">__toString</a>( )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+
+					<h4>Returns</h4>
+					<div class="list">
+						string
+					</div>
+
+
+					<h4>Inherit</h4>
+					<div class="list">
+					</div>
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="__get" id="___get">
+
+			<td class="attributes"><code>
+				 public 
+				string|null
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#___get">#</a>
+			<code><a href="source-class-jp3cki.gimei.name.Person.html#134-169" title="Go to source code">__get</a>( <span>string <var>$key</var></span> )</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$key</var></dt>
+						<dd></dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						string|null
+					</div>
+
+
+					<h4>Inherit</h4>
+					<div class="list">
+					</div>
+
+
+			</div>
+			</div></td>
+		</tr>
+		<tr data-order="toString" id="_toString">
+
+			<td class="attributes"><code>
+				 private 
+				string
+				
+				</code>
+			</td>
+
+			<td class="name"><div>
+			<a class="anchor" href="#_toString">#</a>
+			<code><a href="source-class-jp3cki.gimei.name.Person.html#171-184" title="Go to source code">toString</a>( <span>string <var>$key</var></span> )</code>
+
+			<div class="description short">
+				<p>名字と名前をフォーマットした文字列を取得</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>名字と名前をフォーマットした文字列を取得</p>
+
+
+					<h4>Parameters</h4>
+					<div class="list"><dl>
+						<dt><var>$key</var></dt>
+						<dd>"kanji" | "hiragana" | "katakana"</dd>
+					</dl></div>
+
+					<h4>Returns</h4>
+					<div class="list">
+						string
+					</div>
+
+
+
+
+			</div>
+			</div></td>
+		</tr>
+			</table>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+		<div class="panel panel-default">
+            <div class="panel-heading"><h2>Properties summary</h2></div>
+			<table class="summary table table-bordered table-striped properties" id="properties">
+		<tr data-order="firstName" id="$firstName">
+			<td class="attributes"><code>
+				private  
+				<code><a href="class-jp3cki.gimei.name.NameUnit.html">jp3cki\gimei\name\NameUnit</a></code>
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-jp3cki.gimei.name.Person.html#22-26" title="Go to source code"><var>$firstName</var></a>
+
+				<div class="description short">
+					<p>名前</p>
+				</div>
+
+				<div class="description detailed hidden">
+					<p>名前</p>
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$firstName" class="anchor">#</a>
+					<code></code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="lastName" id="$lastName">
+			<td class="attributes"><code>
+				private  
+				<code><a href="class-jp3cki.gimei.name.NameUnit.html">jp3cki\gimei\name\NameUnit</a></code>
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-jp3cki.gimei.name.Person.html#28-32" title="Go to source code"><var>$lastName</var></a>
+
+				<div class="description short">
+					<p>名字</p>
+				</div>
+
+				<div class="description detailed hidden">
+					<p>名字</p>
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$lastName" class="anchor">#</a>
+					<code></code>
+				</div>
+			</td>
+		</tr>
+		<tr data-order="isMale" id="$isMale">
+			<td class="attributes"><code>
+				private  
+				boolean
+			</code></td>
+
+			<td class="name">
+					<a href="source-class-jp3cki.gimei.name.Person.html#34-38" title="Go to source code"><var>$isMale</var></a>
+
+				<div class="description short">
+					<p>性別。男性なら true</p>
+				</div>
+
+				<div class="description detailed hidden">
+					<p>性別。男性なら true</p>
+
+				</div>
+			</td>
+			<td class="value">
+				<div>
+					<a href="#$isMale" class="anchor">#</a>
+					<code></code>
+				</div>
+			</td>
+		</tr>
+			</table>
+		</div>
+
+
+
+
+
+
+</div>
+	</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>
