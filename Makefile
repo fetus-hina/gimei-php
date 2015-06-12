@@ -26,6 +26,10 @@ check-style:
 fix-style:
 	vendor/bin/phpcbf --standard=PSR2 --encoding=UTF-8 src test
 
+apidoc: depends-install
+	rm -rf apidoc/* || true
+	vendor/bin/apigen generate -s src -d apidoc --template-theme="bootstrap" --todo --tree --access-levels="public,protected,private" --internal
+
 clean:
 	rm -rf vendor composer.phar clover.xml
 
@@ -34,4 +38,4 @@ composer.phar:
 
 FORCE:
 
-.PHONY: all init install-composer depends-install depends-update install-third-party test clean check-style fix-style clover.xml
+.PHONY: all init install-composer depends-install depends-update install-third-party test clean check-style fix-style clover.xml apidoc

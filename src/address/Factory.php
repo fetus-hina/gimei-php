@@ -1,14 +1,35 @@
 <?php
+/**
+ * @author AIZAWA Hina <hina@bouhime.com>
+ * @copyright 2015 AIZAWA Hina <hina@bouhime.com>
+ * @license https://github.com/fetus-hina/gimei-php/blob/master/LICENSE MIT
+ */
+
 namespace jp3cki\gimei\address;
 
 use jp3cki\gimei\Exception;
 
+/**
+ * データを読み込みランダムに選択する
+ */
 class Factory
 {
+    /**
+     * データファイルへの相対パス
+     */
     const JSON_REL_PATH = '../../data/addresses.json';
     
+    /**
+     * データファイルを保持する
+     * @var Dictionary
+     */
     private static $dictionary = null;
 
+    /**
+     * 住所をランダムに選択して返す
+     *
+     * @return Address
+     */
     public static function generate()
     {
         if (self::$dictionary === null) {
@@ -23,6 +44,9 @@ class Factory
         );
     }
 
+    /**
+     * データファイルを読み込む
+     */
     private static function loadData()
     {
         $jsonPath = __DIR__ . '/' . self::JSON_REL_PATH;

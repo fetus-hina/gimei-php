@@ -1,12 +1,49 @@
 <?php
+/**
+ * @author AIZAWA Hina <hina@bouhime.com>
+ * @copyright 2015 AIZAWA Hina <hina@bouhime.com>
+ * @license https://github.com/fetus-hina/gimei-php/blob/master/LICENSE MIT
+ */
+
 namespace jp3cki\gimei\name;
 
+/**
+ * （偽名の）ある人を表すクラス
+ *
+ * 名字・名前の漢字・かな・カナ表記と性別を保持する
+ *
+ * @property-read NameUnit first 名前
+ * @property-read NameUnit last 名字
+ * @property-read bool isMale 男性であれば true
+ * @property-read bool isFemale 女性であれば true
+ */
 class Person
 {
+    /**
+     * 名前
+     * @var NameUnit
+     */
     private $firstName;
+
+    /**
+     * 名字
+     * @var NameUnit
+     */
     private $lastName;
+
+    /**
+     * 性別。男性なら true
+     * @var bool
+     */
     private $isMale;
 
+    /**
+     * コンストラクタ
+     *
+     * @param NameUnit $firstName 名前
+     * @param NameUnit $lastName 名字
+     * @param bool $isMale 男性ならtrue、女性ならfalse
+     */
     public function __construct(NameUnit $firstName, NameUnit $lastName, $isMale)
     {
         $this->firstName = $firstName;
@@ -14,46 +51,91 @@ class Person
         $this->isMale = !!$isMale;
     }
 
+    /**
+     * 漢字表記を取得
+     *
+     * @return string
+     */
     public function getKanji()
     {
         return $this->toString('kanji');
     }
 
+    /**
+     *
+     * かな表記を取得
+     *
+     * @return string
+     */
     public function getHiragana()
     {
         return $this->toString('hiragana');
     }
 
+    /**
+     * カナ表記を取得
+     *
+     * @return string
+     */
     public function getKatakana()
     {
         return $this->toString('katakana');
     }
 
+    /**
+     * 性別を取得。男性なら true
+     *
+     * @return bool
+     */
     public function isMale()
     {
         return $this->isMale;
     }
 
+    /**
+     * 性別を取得。女性なら true
+     *
+     * @return bool
+     */
     public function isFemale()
     {
         return !$this->isMale;
     }
 
+    /**
+     * 名前を取得
+     *
+     * @return NameUnit
+     */
     public function getFirstName()
     {
         return $this->firstName;
     }
 
+    /**
+     * 名字を取得
+     *
+     * @return NameUnit
+     */
     public function getLastName()
     {
         return $this->lastName;
     }
 
+    /**
+     * @inherit
+     * @return string
+     */
     public function __toString()
     {
         return $this->getKanji();
     }
 
+    /**
+     * @inherit
+     * @param string $key
+     * @return string|null
+     */
     public function __get($key)
     {
         switch ($key) {
@@ -86,6 +168,12 @@ class Person
         }
     }
 
+    /**
+     * 名字と名前をフォーマットした文字列を取得
+     *
+     * @param string $key "kanji" | "hiragana" | "katakana"
+     * @return string
+     */
     private function toString($key)
     {
         return sprintf(
