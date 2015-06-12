@@ -10,8 +10,7 @@ Gimei-PHP
 [![HHVM Status](http://hhvm.h4cc.de/badge/jp3cki/gimei.svg)](http://hhvm.h4cc.de/package/jp3cki/gimei)
 
 gimei-php は日本人の名前や、日本の住所をランダムに返すライブラリ [gimei](https://github.com/willnet/gimei) を PHP 用ライブラリにポーティングしたものです。
-
-このライブラリはあとほんの少しの期間だけ開発中です。
+テストデータの作成時などに使用します。
 
 本家
 ----
@@ -198,3 +197,19 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
+
+CHANGE LOG
+----------
+
+- v1.0.0 - 2015-06-13
+    - initial release
+
+備考
+----
+
+- バージョンナンバーは [セマンティック バージョニング](http://semver.org/lang/ja/) に従います。
+    - `v1.0.0` に対して
+        - `v1.0.1` は機能追加等を行わないただのバグ修正であることを示します。このリリースは常に適用が推奨されます。
+        - `v1.1.0` は機能追加を行っていますが既存の API に影響がないことを示します。このリリースは通常は適用が推奨されます。
+        - `v2.0.0` は API の互換性が損なわれたリリースであることを示します。CHANGELOG を確認してください。
+    - composer のバージョン指定においては `^` または `~` で安全に指定できます。
