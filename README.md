@@ -8,6 +8,7 @@ Gimei-PHP
 [![Code Climate](https://codeclimate.com/github/fetus-hina/gimei-php/badges/gpa.svg)](https://codeclimate.com/github/fetus-hina/gimei-php)
 [![Test Coverage](https://codeclimate.com/github/fetus-hina/gimei-php/badges/coverage.svg)](https://codeclimate.com/github/fetus-hina/gimei-php/coverage)
 [![HHVM Status](http://hhvm.h4cc.de/badge/jp3cki/gimei.svg)](http://hhvm.h4cc.de/package/jp3cki/gimei)
+[![Dependency Status](https://www.versioneye.com/user/projects/55805afe386664001f000194/badge.svg?style=flat)](https://www.versioneye.com/user/projects/55805afe386664001f000194)
 
 gimei-php は日本人の名前や、日本の住所をランダムに返すライブラリ [gimei](https://github.com/willnet/gimei) を PHP 用ライブラリにポーティングしたものです。
 テストデータの作成時などに使用します。
