@@ -67,7 +67,7 @@ class GimeiTest extends TestCase
         $this->assertGreaterThan(0, $male);
         $this->assertGreaterThan(0, $female);
         $this->assertEquals($count, $male + $female);
-        $this->assertGreaterThan($female, $male / 2); // 3:1 の割合なのでたぶん 1/2 はこえているはず
+        $this->assertGreaterThan($female, $male);
     }
 
     public function testGenerateAddressReturnsAnAddress()
