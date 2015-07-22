@@ -19,11 +19,12 @@ class Gimei
     /**
      * 男女いずれかの名前をランダムに生成
      *
+     * @param float $maleRate 男性名が生成される確率(0.0～1.0)
      * @return jp3cki\gimei\name\Person
      */
-    public static function generateName()
+    public static function generateName($maleRate = 0.5)
     {
-        return NameFactory::generate();
+        return NameFactory::generate($maleRate);
     }
 
     /**
@@ -33,7 +34,7 @@ class Gimei
      */
     public static function generateMale()
     {
-        return NameFactory::generate(Gender::MALE);
+        return NameFactory::generate(1.0);
     }
 
     /**
@@ -43,7 +44,7 @@ class Gimei
      */
     public static function generateFemale()
     {
-        return NameFactory::generate(Gender::FEMALE);
+        return NameFactory::generate(0.0);
     }
 
     /**

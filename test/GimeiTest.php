@@ -52,6 +52,24 @@ class GimeiTest extends TestCase
         $this->assertFalse($person->isMale());
     }
 
+    public function testGenderNameWithUnbalancedMaleRate()
+    {
+        $count = 50;
+        $male = $female = 0;
+        foreach (range(1, $count) as $i) {
+            $ret = Gimei::generateName(0.75);
+            if ($ret->isMale()) {
+                ++$male;
+            } elseif ($ret->isFemale()) {
+                ++$female;
+            }
+        }
+        $this->assertGreaterThan(0, $male);
+        $this->assertGreaterThan(0, $female);
+        $this->assertEquals($count, $male + $female);
+        $this->assertGreaterThan($female, $male / 2); // 3:1 の割合なのでたぶん 1/2 はこえているはず
+    }
+
     public function testGenerateAddressReturnsAnAddress()
     {
         $address = Gimei::generateAddress();

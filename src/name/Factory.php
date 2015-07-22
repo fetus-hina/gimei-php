@@ -28,16 +28,32 @@ class Factory
     /**
      * 名前をランダムに選択して返す
      *
-     * @param mixed $geneder Gender::MALE|FEMALE|BOTH 選択する性
+     * @param mixed $maleRate 男性名が生成される確率(0.0～1.0)
      * @return Person
      */
-    public static function generate($gender = Gender::BOTH)
+    public static function generate($maleRate = 0.5)
     {
         if (self::$dictionary === null) {
             self::loadData();
         }
-        if ($gender !== Gender::MALE && $gender !== Gender::FEMALE) {
-            $gender = (mt_rand() % 2 === 0) ? Gender::MALE : Gender::FEMALE;
+        switch (true) {
+            // Gender::* is obsoluted in v1.1.0
+            case $maleRate === Gender::MALE:
+                $gender = Gender::MALE;
+                break;
+
+            case $maleRate === Gender::FEMALE:
+                $gender = Gender::FEMALE;
+                break;
+
+            case $maleRate === Gender::BOTH:
+            case !is_float($maleRate):
+                $maleRate = 0.5;
+                // fall through
+            default:
+                $gender = (mt_rand() / mt_getrandmax() <= $maleRate)
+                    ? Gender::MALE
+                    : Gender::FEMALE;
         }
 
         $dict = self::$dictionary;

@@ -113,6 +113,18 @@ echo $gimei->isMale . "\n";         // false (echo の挙動上 "0")
 echo $gimei->isFemale . "\n";       // true  ( 〃           "1")
 ```
 
+また、男女比を明示的に指定できます。（男性の割合を 0.0～1.0 で指定します）
+
+```php
+<?php
+use jp3cki\gimei\Gimei;
+
+// require_once(__DIR__ . '/vendor/autoload.php');
+
+$gimei = Gimei::generate(0.9);      // 90% 男性、10% 女性
+echo $gimei->kanji . "\n";          // "山田 太郎"
+```
+
 名前のデータは `gimei` (オリジナル)プロジェクトの `names.yml` から JSON に変換して利用しています。
 
 
