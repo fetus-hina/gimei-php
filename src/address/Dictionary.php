@@ -1,7 +1,8 @@
 <?php
+
 /**
- * @author AIZAWA Hina <hina@bouhime.com>
- * @copyright 2015 AIZAWA Hina <hina@bouhime.com>
+ * @author AIZAWA Hina <hina@fetus.jp>
+ * @copyright 2015-2019 AIZAWA Hina <hina@fetus.jp>
  * @license https://github.com/fetus-hina/gimei-php/blob/master/LICENSE MIT
  */
 
@@ -94,10 +95,12 @@ class Dictionary
         }
 
         $json = json_decode(file_get_contents($jsonPath), true);
-        if (!isset($json['addresses']) ||
-                !isset($json['addresses']['prefecture']) ||
-                !isset($json['addresses']['city']) ||
-                !isset($json['addresses']['town'])) {
+        if (
+            !isset($json['addresses']) ||
+            !isset($json['addresses']['prefecture']) ||
+            !isset($json['addresses']['city']) ||
+            !isset($json['addresses']['town'])
+        ) {
             throw new Exception('Broken json: ' . basename($jsonPath));
         }
 

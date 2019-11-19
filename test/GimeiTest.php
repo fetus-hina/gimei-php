@@ -1,4 +1,5 @@
 <?php
+
 namespace jp3cki\gimei\test;
 
 use jp3cki\gimei\Gimei;

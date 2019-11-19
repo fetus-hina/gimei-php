@@ -1,6 +1,8 @@
 <?php
+
 namespace jp3cki\gimei\test\name;
 
+use jp3cki\gimei\Exception;
 use jp3cki\gimei\name\Dictionary;
 use jp3cki\gimei\name\Gender;
 use jp3cki\gimei\test\TestCase;
@@ -10,14 +12,14 @@ class DictionaryTest extends TestCase
     // 存在しないファイルを読もうとすると例外が飛ぶはず
     public function testNotFound()
     {
-        $this->setExpectedException('jp3cki\gimei\Exception');
+        $this->expectException(Exception::class);
         new Dictionary(__DIR__ . '/dictionary-test-not-exist.json');
     }
 
     // そもそも JSON ですらないファイルを読もうとすると例外が飛ぶはず
     public function testCompletelyBroken()
     {
-        $this->setExpectedException('jp3cki\gimei\Exception');
+        $this->expectException(Exception::class);
         new Dictionary(__DIR__ . '/dictionary-test-completely-broken.json');
     }
 
@@ -25,7 +27,7 @@ class DictionaryTest extends TestCase
     // 読むと例外が飛ぶはず
     public function testBroken()
     {
-        $this->setExpectedException('jp3cki\gimei\Exception');
+        $this->expectException(Exception::class);
         new Dictionary(__DIR__ . '/dictionary-test-broken.json');
     }
 
@@ -53,7 +55,7 @@ class DictionaryTest extends TestCase
 
     public function testGetOneOfFirstNameInvalid()
     {
-        $this->setExpectedException('jp3cki\gimei\Exception');
+        $this->expectException(Exception::class);
         $dict = new Dictionary(__DIR__ . '/dictionary-test-valid.json');
         $dict->getOneOfFirstName('hoge');
     }

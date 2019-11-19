@@ -1,4 +1,5 @@
 <?php
+
 namespace jp3cki\gimei\test\name;
 
 use jp3cki\gimei\name\NameUnit;

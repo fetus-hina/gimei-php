@@ -1,41 +1,31 @@
-all: init
-
-init: install-composer depends-install install-third-party
-
-install-composer: composer.phar
-
-depends-install: install-composer
-	php composer.phar install
-
-depends-update: install-composer
-	php composer.phar self-update
-	php composer.phar update
+.PHONY: all
+all: install-third-party test
 
 install-third-party:
 	git submodule update --init --recursive
 
-test:
+test: vendor check-style
 	vendor/bin/phpunit
 
-clover.xml:
-	vendor/bin/phpunit --coverage-clover=clover.xml
+check-style: vendor
+	find . \( -type d \( -name '.git' -or -name 'vendor' -or -name 'runtime' \) -prune \) -or \( -type f -name '*.php' -print \) | xargs -n 1 php -l
+	vendor/bin/phpcs --standard=PSR12 --encoding=UTF-8 src test
 
-check-style:
-	vendor/bin/phpcs --standard=PSR2 --encoding=UTF-8 src test
+fix-style: vendor
+	vendor/bin/phpcbf --standard=PSR12 --encoding=UTF-8 src test
 
-fix-style:
-	vendor/bin/phpcbf --standard=PSR2 --encoding=UTF-8 src test
-
-apidoc: depends-install
-	rm -rf apidoc/* || true
-	vendor/bin/apigen generate -s src -d apidoc --template-theme="bootstrap" --todo --tree --access-levels="public,protected,private" --internal
-
+.PHONY: clean
 clean:
-	rm -rf vendor composer.phar clover.xml
+	rm -rf vendor composer.phar
+
+composer.lock: composer.json composer.phar
+	./composer.phar install -v
+	touch $@
+
+vendor: composer.lock composer.phar
+	./composer.phar update -v	
+	touch $@
 
 composer.phar:
 	curl -sS https://getcomposer.org/installer | php
-
-FORCE:
-
-.PHONY: all init install-composer depends-install depends-update install-third-party test clean check-style fix-style clover.xml apidoc
+	touch -r composer.json $@

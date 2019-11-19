@@ -1,4 +1,5 @@
 <?php
+
 namespace jp3cki\gimei\test\address;
 
 use jp3cki\gimei\address\AddressUnit;

@@ -1,5 +1,8 @@
 #!/usr/bin/env php
 <?php
+
+use Symfony\Component\Yaml\Yaml;
+
 require_once(__DIR__ . '/../vendor/autoload.php');
 
 $convertMap = [
@@ -16,7 +19,7 @@ foreach ($convertMap as $outputPath => $inputPath) {
     echo "done.\n";
     $yml = file_get_contents($inputPath);
     echo "Parsing YAML... ";
-    $data = \Symfony\Component\Yaml\Yaml::parse($yml);
+    $data = Yaml::parse($yml);
     echo "done.\n";
     echo "Encoding JSON... ";
     $json = json_encode($data);

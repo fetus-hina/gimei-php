@@ -4,11 +4,6 @@ Gimei-PHP
 [![License](https://poser.pugx.org/jp3cki/gimei/license)](https://packagist.org/packages/jp3cki/gimei)
 [![Latest Stable Version](https://poser.pugx.org/jp3cki/gimei/v/stable)](https://packagist.org/packages/jp3cki/gimei)
 [![Build Status](https://travis-ci.org/fetus-hina/gimei-php.svg?branch=master)](https://travis-ci.org/fetus-hina/gimei-php)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/fetus-hina/gimei-php/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/fetus-hina/gimei-php/?branch=master)
-[![Code Climate](https://codeclimate.com/github/fetus-hina/gimei-php/badges/gpa.svg)](https://codeclimate.com/github/fetus-hina/gimei-php)
-[![Test Coverage](https://codeclimate.com/github/fetus-hina/gimei-php/badges/coverage.svg)](https://codeclimate.com/github/fetus-hina/gimei-php/coverage)
-[![HHVM Status](http://hhvm.h4cc.de/badge/jp3cki/gimei.svg)](http://hhvm.h4cc.de/package/jp3cki/gimei)
-[![Dependency Status](https://www.versioneye.com/user/projects/55805afe386664001f000194/badge.svg?style=flat)](https://www.versioneye.com/user/projects/55805afe386664001f000194)
 
 gimei-php は日本人の名前や、日本の住所をランダムに返すライブラリ [gimei](https://github.com/willnet/gimei) を PHP 用ライブラリにポーティングしたものです。
 テストデータの作成時などに使用します。
@@ -23,8 +18,7 @@ https://github.com/willnet/gimei
 
 ### 必須環境 ###
 
-- PHP 5.4 以上
-    - PHP 7.0 や HHVM でも動きます
+- PHP 7.1 以上
 - `json` 拡張モジュール
 
 
@@ -190,7 +184,7 @@ LICENSE
 ```
 The MIT License (MIT)
 
-Copyright (c) 2015 AIZAWA Hina <hina@bouhime.com>
+Copyright (c) 2015-2019 AIZAWA Hina <hina@fetus.jp>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -213,6 +207,9 @@ SOFTWARE.
 
 CHANGE LOG
 ----------
+
+- v2.0.0 - 2019-11-19
+    - 最小要求バージョンを PHP 7.1 に更新（内容に変更はありません）
 
 - v1.1.1 - 2015-08-19
     - 依存ライブラリアップデート（内容に変更はありません）
@@ -239,5 +236,5 @@ CHANGE LOG
     - `v1.0.0` に対して
         - `v1.0.1` は機能追加等を行わないただのバグ修正であることを示します。このリリースは常に適用が推奨されます。
         - `v1.1.0` は機能追加を行っていますが既存の API に影響がないことを示します。このリリースは通常は適用が推奨されます。
-        - `v2.0.0` は API の互換性が損なわれたリリースであることを示します。CHANGELOG を確認してください。
+        - `v2.0.0` は API の互換性が損なわれたリリースであることを示します。CHANGE LOG を確認してください。
     - composer のバージョン指定においては `^` または `~` で安全に指定できます。
