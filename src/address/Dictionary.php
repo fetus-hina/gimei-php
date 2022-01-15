@@ -24,7 +24,7 @@ class Dictionary
      * @var string[][]
      */
     private $prefectures;
-    
+
     /**
      * 市区町村のリスト
      * @var string[][]

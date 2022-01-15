@@ -19,7 +19,7 @@ class Factory
      * データファイルへの相対パス
      */
     private const JSON_REL_PATH = '../../data/addresses.json';
-    
+
     /**
      * データファイルを保持する
      * @var Dictionary
