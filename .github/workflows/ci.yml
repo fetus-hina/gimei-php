@@ -1,0 +1,115 @@
+name: 'CI'
+
+on:
+  - 'pull_request'
+  - 'push'
+
+env:
+  LANG: 'C'
+
+jobs:
+  phpSyntaxCheck:
+    name: 'PHP Syntax Check (PHP ${{ matrix.env.php }})'
+
+    strategy:
+      matrix:
+        env:
+          - php: '7.1'
+            experimental: false
+
+          - php: '7.2'
+            experimental: false
+
+          - php: '7.3'
+            experimental: false
+
+          - php: '7.4'
+            experimental: false
+
+          - php: '8.0'
+            experimental: false
+
+          - php: '8.1'
+            experimental: false
+
+    runs-on: 'ubuntu-20.04'
+
+    steps:
+      - uses: 'actions/checkout@v2'
+
+      - name: 'Set up PHP ${{ matrix.env.php }}'
+        uses: 'shivammathur/setup-php@v2'
+        with:
+          php-version: '${{ matrix.env.php }}'
+
+      - name: 'Syntax check'
+        continue-on-error: '${{ matrix.env.experimental }}'
+        run: |
+          find . \( -type d \( -name '.git' -or -name 'vendor' -or -name 'node_modules' -or -name 'runtime' \) -prune \) -or \( -type f -name '*.php' -print \) \
+            | sort \
+            | xargs -n 1 php -l
+
+  codingStyle:
+    name: 'Coding style'
+
+    runs-on: 'ubuntu-20.04'
+
+    steps:
+      - uses: 'actions/checkout@v2'
+
+      - name: 'Set up PHP ${{ matrix.env.php }}'
+        uses: 'shivammathur/setup-php@v2'
+        with:
+          php-version: '8.0'
+
+      - name: 'Install dependencies'
+        run: |
+          composer install --prefer-dist
+
+      - name: 'Run PHPCS'
+        run: |
+          vendor/bin/phpcs --standard=PSR12 --encoding=UTF-8 src test
+
+      - name: 'Run PHPStan'
+        run: |
+          vendor/bin/phpstan analyze --level=8 src test
+
+  test:
+    name: 'Test (PHP ${{ matrix.env.php }})'
+
+    strategy:
+      matrix:
+        env:
+          - php: '7.1'
+            experimental: false
+
+          - php: '7.2'
+            experimental: false
+
+          - php: '7.3'
+            experimental: false
+
+          - php: '7.4'
+            experimental: false
+
+          - php: '8.0'
+            experimental: false
+
+          # - php: '8.1'
+          #   experimental: false
+
+    runs-on: 'ubuntu-20.04'
+
+    steps:
+      - uses: 'actions/checkout@v2'
+
+      - name: 'Set up PHP ${{ matrix.env.php }}'
+        uses: 'shivammathur/setup-php@v2'
+        with:
+          php-version: '${{ matrix.env.php }}'
+
+      - name: 'Syntax check'
+        continue-on-error: '${{ matrix.env.experimental }}'
+        run: |
+          composer install --prefer-dist
+          vendor/bin/phpunit
