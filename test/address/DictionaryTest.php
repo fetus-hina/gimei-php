@@ -9,14 +9,14 @@ use jp3cki\gimei\test\TestCase;
 class DictionaryTest extends TestCase
 {
     // 存在しないファイルを読もうとすると例外が飛ぶはず
-    public function testNotFound()
+    public function testNotFound(): void
     {
         $this->expectException(Exception::class);
         new Dictionary(__DIR__ . '/dictionary-test-not-exist.json');
     }
 
     // そもそも JSON ですらないファイルを読もうとすると例外が飛ぶはず
-    public function testCompletelyBroken()
+    public function testCompletelyBroken(): void
     {
         $this->expectException(Exception::class);
         new Dictionary(__DIR__ . '/dictionary-test-completely-broken.json');
@@ -24,13 +24,13 @@ class DictionaryTest extends TestCase
 
     // JSON としては正しいがデータファイルとしては壊れているものを
     // 読むと例外が飛ぶはず
-    public function testBroken()
+    public function testBroken(): void
     {
         $this->expectException(Exception::class);
         new Dictionary(__DIR__ . '/dictionary-test-broken.json');
     }
 
-    public function testGetOneOfPrefecture()
+    public function testGetOneOfPrefecture(): void
     {
         $dict = new Dictionary(__DIR__ . '/dictionary-test-valid.json');
         foreach (range(1, 20) as $i) {
@@ -41,7 +41,7 @@ class DictionaryTest extends TestCase
         }
     }
 
-    public function testGetOneOfCity()
+    public function testGetOneOfCity(): void
     {
         $dict = new Dictionary(__DIR__ . '/dictionary-test-valid.json');
         foreach (range(1, 20) as $i) {
@@ -52,7 +52,7 @@ class DictionaryTest extends TestCase
         }
     }
 
-    public function testGetOneOfTown()
+    public function testGetOneOfTown(): void
     {
         $dict = new Dictionary(__DIR__ . '/dictionary-test-valid.json');
         foreach (range(1, 20) as $i) {

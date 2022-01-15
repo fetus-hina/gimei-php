@@ -12,9 +12,9 @@ namespace jp3cki\gimei;
  * 漢字・かな・カナをひとまとめにしたクラス
  *
  * @internal
- * @property-read string kanji 漢字表記
- * @property-read string hiragana かな表記
- * @property-read string katakana カナ表記
+ * @property-read string $kanji 漢字表記
+ * @property-read string $hiragana かな表記
+ * @property-read string $katakana カナ表記
  */
 class DataUnit
 {
@@ -43,9 +43,11 @@ class DataUnit
      */
     public function __construct(array $data)
     {
-        $this->kanji = array_shift($data);
-        $this->hiragana = array_shift($data);
-        $this->katakana = array_shift($data);
+        assert(count($data) === 3);
+
+        $this->kanji = (string)array_shift($data);
+        $this->hiragana = (string)array_shift($data);
+        $this->katakana = (string)array_shift($data);
     }
 
     /**
@@ -87,6 +89,7 @@ class DataUnit
     }
 
     /**
+     * @param string $key
      * @return string|null
      */
     public function __get($key)
@@ -94,10 +97,14 @@ class DataUnit
         switch ($key) {
             case 'kanji':
                 return $this->getKanji();
+
             case 'hiragana':
                 return $this->getHiragana();
+
             case 'katakana':
                 return $this->getKatakana();
         }
+
+        return null;
     }
 }

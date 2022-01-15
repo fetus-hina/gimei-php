@@ -21,7 +21,7 @@ class Gimei
      * 男女いずれかの名前をランダムに生成
      *
      * @param float $maleRate 男性名が生成される確率(0.0～1.0)
-     * @return jp3cki\gimei\name\Person
+     * @return \jp3cki\gimei\name\Person
      */
     public static function generateName($maleRate = 0.5)
     {
@@ -31,7 +31,7 @@ class Gimei
     /**
      * 男性名をランダムに生成
      *
-     * @return jp3cki\gimei\name\Person
+     * @return \jp3cki\gimei\name\Person
      */
     public static function generateMale()
     {
@@ -41,7 +41,7 @@ class Gimei
     /**
      * 女性名をランダムに生成
      *
-     * @return jp3cki\gimei\name\Person
+     * @return \jp3cki\gimei\name\Person
      */
     public static function generateFemale()
     {
@@ -51,7 +51,7 @@ class Gimei
     /**
      * 住所をランダムに生成
      *
-     * @return jp3cki\gimei\address\Address
+     * @return \jp3cki\gimei\address\Address
      */
     public static function generateAddress()
     {

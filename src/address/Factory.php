@@ -48,7 +48,7 @@ class Factory
     /**
      * データファイルを読み込む
      */
-    private static function loadData()
+    private static function loadData(): void
     {
         $jsonPath = __DIR__ . '/' . self::JSON_REL_PATH;
         self::$dictionary = new Dictionary($jsonPath);

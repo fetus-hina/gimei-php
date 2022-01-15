@@ -8,9 +8,13 @@ use jp3cki\gimei\test\TestCase;
 
 class PersonTest extends TestCase
 {
+    /** @var Person */
     private $male;
+
+    /** @var Person */
     private $female;
 
+    /** @return void */
     public function setUp()
     {
         $this->male = new Person(
@@ -25,13 +29,14 @@ class PersonTest extends TestCase
         );
     }
 
+    /** @return void */
     public function tearDown()
     {
         unset($this->male);
         unset($this->female);
     }
 
-    public function testGetKanji()
+    public function testGetKanji(): void
     {
         $this->assertEquals('山田 太郎', $this->male->getKanji());
         $this->assertEquals('山田 太郎', $this->male->kanji);
@@ -39,7 +44,7 @@ class PersonTest extends TestCase
         $this->assertEquals('相沢 陽菜', $this->female->kanji);
     }
 
-    public function testGetHiragana()
+    public function testGetHiragana(): void
     {
         $this->assertEquals('やまだ たろう', $this->male->getHiragana());
         $this->assertEquals('やまだ たろう', $this->male->hiragana);
@@ -47,7 +52,7 @@ class PersonTest extends TestCase
         $this->assertEquals('あいざわ ひな', $this->female->hiragana);
     }
 
-    public function testGetKatakana()
+    public function testGetKatakana(): void
     {
         $this->assertEquals('ヤマダ タロウ', $this->male->getKatakana());
         $this->assertEquals('ヤマダ タロウ', $this->male->katakana);
@@ -55,7 +60,7 @@ class PersonTest extends TestCase
         $this->assertEquals('アイザワ ヒナ', $this->female->katakana);
     }
 
-    public function testIsMale()
+    public function testIsMale(): void
     {
         $this->assertTrue($this->male->isMale());
         $this->assertTrue($this->male->isMale);
@@ -65,7 +70,7 @@ class PersonTest extends TestCase
         $this->assertFalse($this->female->is_male);
     }
 
-    public function testIsFemale()
+    public function testIsFemale(): void
     {
         $this->assertFalse($this->male->isFemale());
         $this->assertFalse($this->male->isFemale);
@@ -75,13 +80,13 @@ class PersonTest extends TestCase
         $this->assertTrue($this->female->is_female);
     }
 
-    public function testStringily()
+    public function testStringily(): void
     {
         $this->assertEquals($this->male->getKanji(), (string)$this->male);
         $this->assertEquals($this->female->getKanji(), (string)$this->female);
     }
 
-    public function testFirstName()
+    public function testFirstName(): void
     {
         $maleFirstName = $this->male->getFirstName();
         $this->assertInstanceOf('jp3cki\gimei\name\NameUnit', $maleFirstName);
@@ -100,7 +105,7 @@ class PersonTest extends TestCase
         $this->assertEquals('太郎', $maleFirstName->getKanji());
     }
 
-    public function testLastName()
+    public function testLastName(): void
     {
         $maleLastName = $this->male->getLastName();
         $this->assertInstanceOf('jp3cki\gimei\name\NameUnit', $maleLastName);
@@ -119,8 +124,9 @@ class PersonTest extends TestCase
         $this->assertEquals('山田', $maleLastName->getKanji());
     }
 
-    public function testUnknownProperty()
+    public function testUnknownProperty(): void
     {
+        // @phpstan-ignore-next-line
         $this->assertNull($this->male->hoge);
     }
 }

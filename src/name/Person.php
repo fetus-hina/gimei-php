@@ -13,10 +13,19 @@ namespace jp3cki\gimei\name;
  *
  * 名字・名前の漢字・かな・カナ表記と性別を保持する
  *
- * @property-read NameUnit first 名前
- * @property-read NameUnit last 名字
- * @property-read bool isMale 男性であれば true
- * @property-read bool isFemale 女性であれば true
+ * @property-read NameUnit $first 名前
+ * @property-read NameUnit $firstName 名前
+ * @property-read NameUnit $first_name 名前
+ * @property-read NameUnit $last 名字
+ * @property-read NameUnit $lastName 名字
+ * @property-read NameUnit $last_name 名字
+ * @property-read bool $isFemale 女性であれば true
+ * @property-read bool $isMale 男性であれば true
+ * @property-read bool $is_female 女性であれば true
+ * @property-read bool $is_male 男性であれば true
+ * @property-read string $hiragana フルネームひらがな表記
+ * @property-read string $kanji フルネーム漢字表記
+ * @property-read string $katakana フルネームカタカナ表記
  */
 class Person
 {
@@ -135,7 +144,7 @@ class Person
     /**
      * @inherit
      * @param string $key
-     * @return string|null
+     * @return bool|string|null
      */
     public function __get($key)
     {
@@ -167,6 +176,8 @@ class Person
             case 'last':
                 return $this->getLastName();
         }
+
+        return null;
     }
 
     /**

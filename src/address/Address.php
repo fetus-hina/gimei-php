@@ -11,9 +11,12 @@ namespace jp3cki\gimei\address;
 /**
  * 住所を保持するクラス
  *
- * @property-read AddressUnit prefecture 都道府県
- * @property-read AddressUnit city 市区町村
- * @property-read AddressUnit town 大字等
+ * @property-read AddressUnit $city 市区町村
+ * @property-read AddressUnit $prefecture 都道府県
+ * @property-read AddressUnit $town 大字等
+ * @property-read string $hiragana ひらがな表記
+ * @property-read string $kanji 漢字表記
+ * @property-read string $katakana カタカナ表記
  */
 class Address
 {
@@ -144,6 +147,8 @@ class Address
             case 'town':
                 return $this->getTown();
         }
+
+        return null;
     }
 
     /**

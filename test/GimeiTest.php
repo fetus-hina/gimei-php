@@ -7,12 +7,12 @@ use jp3cki\gimei\name\Person;
 
 class GimeiTest extends TestCase
 {
-    public function testGenerateNameReturnsAPerson()
+    public function testGenerateNameReturnsAPerson(): void
     {
         $this->assertInstanceOf('jp3cki\gimei\name\Person', Gimei::generateName());
     }
 
-    public function testGenerateNameReturnsBothGender()
+    public function testGenerateNameReturnsBothGender(): void
     {
         $count = 20;
         $male = $female = 0;
@@ -29,31 +29,31 @@ class GimeiTest extends TestCase
         $this->assertEquals($count, $male + $female);
     }
 
-    public function testGenerateMaleReturnsAPerson()
+    public function testGenerateMaleReturnsAPerson(): void
     {
         $this->assertInstanceOf('jp3cki\gimei\name\Person', Gimei::generateMale());
     }
 
-    public function testGenerateMaleReturnsMale()
+    public function testGenerateMaleReturnsMale(): void
     {
         $person = Gimei::generateMale();
         $this->assertTrue($person->isMale());
         $this->assertFalse($person->isFemale());
     }
 
-    public function testGenerateFemaleReturnsAPerson()
+    public function testGenerateFemaleReturnsAPerson(): void
     {
         $this->assertInstanceOf('jp3cki\gimei\name\Person', Gimei::generateFemale());
     }
 
-    public function testGenerateFemaleReturnsFemale()
+    public function testGenerateFemaleReturnsFemale(): void
     {
         $person = Gimei::generateFemale();
         $this->assertTrue($person->isFemale());
         $this->assertFalse($person->isMale());
     }
 
-    public function testGenderNameWithUnbalancedMaleRate()
+    public function testGenderNameWithUnbalancedMaleRate(): void
     {
         $count = 50;
         $male = $female = 0;
@@ -71,7 +71,7 @@ class GimeiTest extends TestCase
         $this->assertGreaterThan($female, $male);
     }
 
-    public function testGenerateAddressReturnsAnAddress()
+    public function testGenerateAddressReturnsAnAddress(): void
     {
         $address = Gimei::generateAddress();
         $this->assertInstanceOf('jp3cki\gimei\address\Address', $address);

@@ -13,9 +13,9 @@ use jp3cki\gimei\Exception;
 /**
  * データファイルを読み込み保持するクラス
  *
- * @property-read array prefectures
- * @property-read array cities
- * @property-read array towns
+ * @property-read array $prefectures
+ * @property-read array $cities
+ * @property-read array $towns
  */
 class Dictionary
 {
@@ -88,13 +88,13 @@ class Dictionary
      *
      * @param string $jsonPath ファイルパス
      */
-    private function load($jsonPath)
+    private function load($jsonPath): void
     {
         if (!file_exists($jsonPath)) {
             throw new Exception('Could not find ' . basename($jsonPath));
         }
 
-        $json = json_decode(file_get_contents($jsonPath), true);
+        $json = json_decode((string)file_get_contents($jsonPath), true);
         if (
             !isset($json['addresses']) ||
             !isset($json['addresses']['prefecture']) ||

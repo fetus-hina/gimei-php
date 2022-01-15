@@ -8,9 +8,13 @@ use jp3cki\gimei\test\TestCase;
 
 class AddressTest extends TestCase
 {
+    /** @var Address */
     private $osaka;
+
+    /** @var Address */
     private $tokyo;
 
+    /** @return void */
     public function setUp()
     {
         $this->osaka = new Address(
@@ -37,13 +41,14 @@ class AddressTest extends TestCase
         );
     }
 
+    /** @return void */
     public function tearDown()
     {
         unset($this->osaka);
         unset($this->tokyo);
     }
 
-    public function testGetKanji()
+    public function testGetKanji(): void
     {
         $this->assertEquals(
             '大阪府大阪市中央区大手前',
@@ -63,7 +68,7 @@ class AddressTest extends TestCase
         );
     }
 
-    public function testGetHiragana()
+    public function testGetHiragana(): void
     {
         $this->assertEquals(
             'おおさかふおおさかしちゅうおうくおおてまえ',
@@ -83,7 +88,7 @@ class AddressTest extends TestCase
         );
     }
 
-    public function testGetKatakana()
+    public function testGetKatakana(): void
     {
         $this->assertEquals(
             'オオサカフオオサカシチュウオウクオオテマエ',
@@ -103,13 +108,13 @@ class AddressTest extends TestCase
         );
     }
 
-    public function testStringily()
+    public function testStringily(): void
     {
         $this->assertEquals($this->osaka->getKanji(), (string)$this->osaka);
         $this->assertEquals($this->tokyo->getKanji(), (string)$this->tokyo);
     }
 
-    public function testPrefecture()
+    public function testPrefecture(): void
     {
         $o = $this->osaka->getPrefecture();
         $this->assertInstanceOf('jp3cki\gimei\address\AddressUnit', $o);
@@ -120,7 +125,7 @@ class AddressTest extends TestCase
         $this->assertEquals('大阪府', $o->getKanji());
     }
 
-    public function testCity()
+    public function testCity(): void
     {
         $o = $this->osaka->getCity();
         $this->assertInstanceOf('jp3cki\gimei\address\AddressUnit', $o);
@@ -131,7 +136,7 @@ class AddressTest extends TestCase
         $this->assertEquals('大阪市中央区', $o->getKanji());
     }
 
-    public function testTown()
+    public function testTown(): void
     {
         $o = $this->osaka->getTown();
         $this->assertInstanceOf('jp3cki\gimei\address\AddressUnit', $o);
@@ -142,8 +147,9 @@ class AddressTest extends TestCase
         $this->assertEquals('大手前', $o->getKanji());
     }
 
-    public function testUnknownProperty()
+    public function testUnknownProperty(): void
     {
+        // @phpstan-ignore-next-line
         $this->assertNull($this->osaka->hoge);
     }
 }

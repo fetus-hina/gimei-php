@@ -13,9 +13,9 @@ use jp3cki\gimei\Exception;
 /**
  * データファイルを読み込み保持するクラス
  *
- * @property-read array prefectures
- * @property-read array cities
- * @property-read array towns
+ * @property-read array $prefectures
+ * @property-read array $cities
+ * @property-read array $towns
  */
 class Dictionary
 {
@@ -50,7 +50,7 @@ class Dictionary
     /**
      * 名前をランダムに選択して返す
      *
-     * @param mixed Gender::MALE | Gender::FEMALE 選択する性
+     * @param Gender::MALE|Gender::FEMALE $gender 選択する性
      * @return string[]
      */
     public function getOneOfFirstName($gender)
@@ -84,13 +84,13 @@ class Dictionary
      *
      * @param string $jsonPath ファイルパス
      */
-    private function load($jsonPath)
+    private function load($jsonPath): void
     {
         if (!file_exists($jsonPath)) {
             throw new Exception('Could not find ' . basename($jsonPath));
         }
 
-        $json = json_decode(file_get_contents($jsonPath), true);
+        $json = json_decode((string)file_get_contents($jsonPath), true);
         if (
             !isset($json['first_name']['male']) ||
             !isset($json['first_name']['female']) ||
