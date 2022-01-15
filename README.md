@@ -184,7 +184,7 @@ LICENSE
 ```
 The MIT License (MIT)
 
-Copyright (c) 2015-2019 AIZAWA Hina <hina@fetus.jp>
+Copyright (c) 2015-2022 AIZAWA Hina <hina@fetus.jp>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -207,6 +207,11 @@ SOFTWARE.
 
 CHANGE LOG
 ----------
+
+- v2.0.1 - 2022-01-15
+    - 依存ライブラリアップデート
+    - phpdoc 等の更新
+    - phpcs, phpstan による検出箇所の更新
 
 - v2.0.0 - 2019-11-19
     - 最小要求バージョンを PHP 7.1 に更新（内容に変更はありません）
