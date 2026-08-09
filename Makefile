@@ -12,9 +12,20 @@ test: vendor check-style
 .PHONY: check-style
 check-style: check-style-syntax check-style-phpcs check-style-phpstan
 
+# PHP 8.3 以降は `php -l` が複数ファイルを受け付けるので、
+# 1ファイルごとにプロセスを起動しなくて済む。
+# 8.2 以前に複数渡すと先頭のファイルしか検査されず素通りするため、
+# バージョンを見て xargs の渡し方を変える。
+# https://github.com/php/php-src/blob/PHP-8.3/UPGRADING (CLI の項)
 .PHONY: check-style-syntax
 check-style-syntax:
-	find . \( -type d \( -name '.git' -or -name 'vendor' -or -name 'runtime' \) -prune \) -or \( -type f -name '*.php' -print \) | xargs -n 1 php -l
+	if php -r 'exit(PHP_VERSION_ID >= 80300 ? 0 : 1);'; then \
+		xargs_opts=''; \
+	else \
+		xargs_opts='-n 1'; \
+	fi; \
+	find . \( -type d \( -name '.git' -or -name 'vendor' -or -name 'runtime' \) -prune \) -or \( -type f -name '*.php' -print \) \
+		| xargs $$xargs_opts php -l
 
 .PHONY: check-style-phpcs
 check-style-phpcs: vendor
