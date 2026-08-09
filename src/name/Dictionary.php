@@ -2,7 +2,7 @@
 
 /**
  * @author AIZAWA Hina <hina@fetus.jp>
- * @copyright 2015-2019 AIZAWA Hina <hina@fetus.jp>
+ * @copyright 2015-2026 AIZAWA Hina <hina@fetus.jp>
  * @license https://github.com/fetus-hina/gimei-php/blob/master/LICENSE MIT
  */
 
@@ -12,10 +12,6 @@ use jp3cki\gimei\Exception;
 
 /**
  * データファイルを読み込み保持するクラス
- *
- * @property-read array $prefectures
- * @property-read array $cities
- * @property-read array $towns
  */
 class Dictionary
 {
@@ -23,26 +19,26 @@ class Dictionary
      * 男性名のリスト
      * @var string[][]
      */
-    private $maleFirstNames;
+    private array $maleFirstNames = [];
 
     /**
      * 女性名のリスト
      * @var string[][]
      */
-    private $femaleFirstNames;
+    private array $femaleFirstNames = [];
 
     /**
      * 名字のリスト
      * @var string[][]
      */
-    private $lastNames;
+    private array $lastNames = [];
 
     /**
      * コンストラクタ
      *
      * @param string $jsonPath データファイルのパス
      */
-    public function __construct($jsonPath)
+    public function __construct(string $jsonPath)
     {
         $this->load($jsonPath);
     }
@@ -50,21 +46,21 @@ class Dictionary
     /**
      * 名前をランダムに選択して返す
      *
-     * @param Gender::MALE|Gender::FEMALE $gender 選択する性
+     * @param string $gender 選択する性。Gender::MALE または Gender::FEMALE
      * @return string[]
+     * @phpstan-param Gender::MALE|Gender::FEMALE $gender
      */
-    public function getOneOfFirstName($gender)
+    public function getOneOfFirstName(string $gender): array
     {
-        if ($gender === Gender::MALE) {
-            return $this->maleFirstNames[
+        return match ($gender) {
+            Gender::MALE => $this->maleFirstNames[
                 mt_rand(0, count($this->maleFirstNames) - 1)
-            ];
-        } elseif ($gender === Gender::FEMALE) {
-            return $this->femaleFirstNames[
+            ],
+            Gender::FEMALE => $this->femaleFirstNames[
                 mt_rand(0, count($this->femaleFirstNames) - 1)
-            ];
-        }
-        throw new Exception('Invalid gender: ' . $gender);
+            ],
+            default => throw new Exception('Invalid gender: ' . $gender),
+        };
     }
 
     /**
@@ -72,7 +68,7 @@ class Dictionary
      *
      * @return string[]
      */
-    public function getOneOfLastName()
+    public function getOneOfLastName(): array
     {
         return $this->lastNames[
             mt_rand(0, count($this->lastNames) - 1)
@@ -84,7 +80,7 @@ class Dictionary
      *
      * @param string $jsonPath ファイルパス
      */
-    private function load($jsonPath): void
+    private function load(string $jsonPath): void
     {
         if (!file_exists($jsonPath)) {
             throw new Exception('Could not find ' . basename($jsonPath));

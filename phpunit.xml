@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="vendor/autoload.php" convertErrorsToExceptions="true" convertNoticesToExceptions="true" convertWarningsToExceptions="true" stopOnFailure="false">
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         cacheDirectory=".phpunit.cache"
+         colors="true"
+         stopOnFailure="false"
+         failOnDeprecation="true"
+         failOnNotice="true"
+         failOnWarning="true">
   <testsuites>
     <testsuite name="The Test Suite">
       <directory>./test</directory>
     </testsuite>
   </testsuites>
-  <filter>
-    <whitelist>
+  <source>
+    <include>
       <directory>./src</directory>
-    </whitelist>
-  </filter>
+    </include>
+  </source>
 </phpunit>

@@ -2,7 +2,7 @@
 
 /**
  * @author AIZAWA Hina <hina@fetus.jp>
- * @copyright 2015-2019 AIZAWA Hina <hina@fetus.jp>
+ * @copyright 2015-2026 AIZAWA Hina <hina@fetus.jp>
  * @license https://github.com/fetus-hina/gimei-php/blob/master/LICENSE MIT
  */
 
@@ -17,6 +17,7 @@ namespace jp3cki\gimei\address;
  * @property-read string $hiragana ひらがな表記
  * @property-read string $kanji 漢字表記
  * @property-read string $katakana カタカナ表記
+ * @property-read string $romaji ローマ字表記
  */
 class Address
 {
@@ -83,6 +84,23 @@ class Address
     }
 
     /**
+     * ローマ字表記を取得
+     *
+     * 漢字・かな・カナと異なり、本家 gimei に合わせて各要素を空白で区切る
+     *
+     * @return string
+     */
+    public function getRomaji()
+    {
+        return sprintf(
+            '%s %s %s',
+            $this->prefecture->getRomaji(),
+            $this->city->getRomaji(),
+            $this->town->getRomaji()
+        );
+    }
+
+    /**
      * 都道府県を取得
      *
      * @return AddressUnit
@@ -137,6 +155,9 @@ class Address
 
             case 'katakana':
                 return $this->getKatakana();
+
+            case 'romaji':
+                return $this->getRomaji();
 
             case 'prefecture':
                 return $this->getPrefecture();

@@ -2,3 +2,5 @@ vendor
 composer.phar
 clover.xml
 update-coverage.sh
+.phpunit.cache
+.phpunit.result.cache

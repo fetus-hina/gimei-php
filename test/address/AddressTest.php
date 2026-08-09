@@ -8,41 +8,37 @@ use jp3cki\gimei\test\TestCase;
 
 class AddressTest extends TestCase
 {
-    /** @var Address */
-    private $osaka;
+    private Address $osaka;
 
-    /** @var Address */
-    private $tokyo;
+    private Address $tokyo;
 
-    /** @return void */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->osaka = new Address(
             new AddressUnit(
-                ['大阪府', 'おおさかふ', 'オオサカフ']
+                ['大阪府', 'おおさかふ', 'オオサカフ', 'Oosakafu']
             ),
             new AddressUnit(
-                ['大阪市中央区', 'おおさかしちゅうおうく', 'オオサカシチュウオウク']
+                ['大阪市中央区', 'おおさかしちゅうおうく', 'オオサカシチュウオウク', 'Oosakashichuuouku']
             ),
             new AddressUnit(
-                ['大手前', 'おおてまえ', 'オオテマエ']
+                ['大手前', 'おおてまえ', 'オオテマエ', 'Ootemae']
             )
         );
         $this->tokyo = new Address(
             new AddressUnit(
-                ['東京都', 'とうきょうと', 'トウキョウト']
+                ['東京都', 'とうきょうと', 'トウキョウト', 'Toukyouto']
             ),
             new AddressUnit(
-                ['新宿区', 'しんじゅくく', 'シンジュクク']
+                ['新宿区', 'しんじゅくく', 'シンジュクク', 'Shinjukuku']
             ),
             new AddressUnit(
-                ['西新宿', 'にししんじゅく', 'ニシシンジュク']
+                ['西新宿', 'にししんじゅく', 'ニシシンジュク', 'Nishishinjuku']
             )
         );
     }
 
-    /** @return void */
-    public function tearDown()
+    protected function tearDown(): void
     {
         unset($this->osaka);
         unset($this->tokyo);
@@ -105,6 +101,27 @@ class AddressTest extends TestCase
         $this->assertEquals(
             'トウキョウトシンジュククニシシンジュク',
             $this->tokyo->katakana
+        );
+    }
+
+    // 漢字・かな・カナと違い各要素が空白区切りになる
+    public function testGetRomaji(): void
+    {
+        $this->assertEquals(
+            'Oosakafu Oosakashichuuouku Ootemae',
+            $this->osaka->getRomaji()
+        );
+        $this->assertEquals(
+            'Oosakafu Oosakashichuuouku Ootemae',
+            $this->osaka->romaji
+        );
+        $this->assertEquals(
+            'Toukyouto Shinjukuku Nishishinjuku',
+            $this->tokyo->getRomaji()
+        );
+        $this->assertEquals(
+            'Toukyouto Shinjukuku Nishishinjuku',
+            $this->tokyo->romaji
         );
     }
 

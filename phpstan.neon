@@ -1,0 +1,10 @@
+parameters:
+    level: 8
+    paths:
+        - src
+        - test
+
+    # PHPDoc の型（@phpstan-param Gender::MALE|Gender::FEMALE 等）は
+    # 呼び出し側を縛るためのヒントであって、実行時にその型である保証はない。
+    # 実行時バリデーションを「常に真」と誤判定させないため確定扱いしない。
+    treatPhpDocTypesAsCertain: false
