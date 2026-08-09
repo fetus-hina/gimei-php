@@ -35,9 +35,8 @@ class DictionaryTest extends TestCase
         $dict = new Dictionary(__DIR__ . '/dictionary-test-valid.json');
         foreach (range(1, 20) as $i) {
             $ret = $dict->getOneOfPrefecture();
-            $this->assertTrue(is_array($ret));
-            $this->assertTrue(count($ret) === 3);
-            $this->assertTrue($ret[0] === '東京都' || $ret[0] === '大阪府');
+            $this->assertCount(4, $ret);
+            $this->assertContains($ret[0], ['東京都', '大阪府']);
         }
     }
 
@@ -46,9 +45,8 @@ class DictionaryTest extends TestCase
         $dict = new Dictionary(__DIR__ . '/dictionary-test-valid.json');
         foreach (range(1, 20) as $i) {
             $ret = $dict->getOneOfCity();
-            $this->assertTrue(is_array($ret));
-            $this->assertTrue(count($ret) === 3);
-            $this->assertTrue($ret[0] === '新宿区' || $ret[0] === '大阪市中央区');
+            $this->assertCount(4, $ret);
+            $this->assertContains($ret[0], ['新宿区', '大阪市中央区']);
         }
     }
 
@@ -57,9 +55,8 @@ class DictionaryTest extends TestCase
         $dict = new Dictionary(__DIR__ . '/dictionary-test-valid.json');
         foreach (range(1, 20) as $i) {
             $ret = $dict->getOneOfTown();
-            $this->assertTrue(is_array($ret));
-            $this->assertTrue(count($ret) === 3);
-            $this->assertTrue($ret[0] === '西新宿' || $ret[0] === '大手前');
+            $this->assertCount(4, $ret);
+            $this->assertContains($ret[0], ['西新宿', '大手前']);
         }
     }
 }

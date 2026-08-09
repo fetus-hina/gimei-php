@@ -5,23 +5,19 @@ namespace jp3cki\gimei\test\address;
 use jp3cki\gimei\address\AddressUnit;
 use jp3cki\gimei\test\TestCase;
 
-class NameUnitTest extends TestCase
+class AddressUnitTest extends TestCase
 {
-    /** @var AddressUnit */
-    private $obj1;
+    private AddressUnit $obj1;
 
-    /** @var AddressUnit */
-    private $obj2;
+    private AddressUnit $obj2;
 
-    /** @return void */
-    public function setUp()
+    protected function setUp(): void
     {
-        $this->obj1 = new AddressUnit([ '東京都', 'とうきょうと', 'トウキョウト' ]);
-        $this->obj2 = new AddressUnit([ '大阪府', 'おおさかふ', 'オオサカフ' ]);
+        $this->obj1 = new AddressUnit([ '東京都', 'とうきょうと', 'トウキョウト', 'Toukyouto' ]);
+        $this->obj2 = new AddressUnit([ '大阪府', 'おおさかふ', 'オオサカフ', 'Oosakafu' ]);
     }
 
-    /** @return void */
-    public function tearDown()
+    protected function tearDown(): void
     {
         unset($this->obj1);
         unset($this->obj2);
@@ -49,6 +45,14 @@ class NameUnitTest extends TestCase
         $this->assertEquals('トウキョウト', $this->obj1->katakana);
         $this->assertEquals('オオサカフ', $this->obj2->getKatakana());
         $this->assertEquals('オオサカフ', $this->obj2->katakana);
+    }
+
+    public function testGetRomaji(): void
+    {
+        $this->assertEquals('Toukyouto', $this->obj1->getRomaji());
+        $this->assertEquals('Toukyouto', $this->obj1->romaji);
+        $this->assertEquals('Oosakafu', $this->obj2->getRomaji());
+        $this->assertEquals('Oosakafu', $this->obj2->romaji);
     }
 
     public function testStringify(): void

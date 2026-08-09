@@ -12,30 +12,25 @@ jobs:
     name: 'PHP Syntax Check (PHP ${{ matrix.env.php }})'
 
     strategy:
+      fail-fast: false
       matrix:
         env:
-          - php: '7.1'
+          - php: '8.2'
             experimental: false
 
-          - php: '7.2'
+          - php: '8.3'
             experimental: false
 
-          - php: '7.3'
+          - php: '8.4'
             experimental: false
 
-          - php: '7.4'
+          - php: '8.5'
             experimental: false
 
-          - php: '8.0'
-            experimental: false
-
-          - php: '8.1'
-            experimental: false
-
-    runs-on: 'ubuntu-20.04'
+    runs-on: 'ubuntu-latest'
 
     steps:
-      - uses: 'actions/checkout@v2'
+      - uses: 'actions/checkout@v4'
 
       - name: 'Set up PHP ${{ matrix.env.php }}'
         uses: 'shivammathur/setup-php@v2'
@@ -52,15 +47,15 @@ jobs:
   codingStyle:
     name: 'Coding style'
 
-    runs-on: 'ubuntu-20.04'
+    runs-on: 'ubuntu-latest'
 
     steps:
-      - uses: 'actions/checkout@v2'
+      - uses: 'actions/checkout@v4'
 
-      - name: 'Set up PHP ${{ matrix.env.php }}'
+      - name: 'Set up PHP'
         uses: 'shivammathur/setup-php@v2'
         with:
-          php-version: '8.0'
+          php-version: '8.2'
 
       - name: 'Install dependencies'
         run: |
@@ -72,44 +67,45 @@ jobs:
 
       - name: 'Run PHPStan'
         run: |
-          vendor/bin/phpstan analyze --level=8 src test
+          vendor/bin/phpstan analyze
 
   test:
     name: 'Test (PHP ${{ matrix.env.php }})'
 
     strategy:
+      fail-fast: false
       matrix:
         env:
-          - php: '7.1'
+          - php: '8.2'
             experimental: false
 
-          - php: '7.2'
+          - php: '8.3'
             experimental: false
 
-          - php: '7.3'
+          - php: '8.4'
             experimental: false
 
-          - php: '7.4'
+          - php: '8.5'
             experimental: false
 
-          - php: '8.0'
-            experimental: false
-
-          # - php: '8.1'
-          #   experimental: false
-
-    runs-on: 'ubuntu-20.04'
+    runs-on: 'ubuntu-latest'
 
     steps:
-      - uses: 'actions/checkout@v2'
+      - uses: 'actions/checkout@v4'
 
       - name: 'Set up PHP ${{ matrix.env.php }}'
         uses: 'shivammathur/setup-php@v2'
         with:
           php-version: '${{ matrix.env.php }}'
+          # データファイルの形式チェック等に assert() を使っているため、
+          # 既定の production 設定（zend.assertions=-1）では素通りしてしまう
+          ini-values: 'zend.assertions=1'
 
-      - name: 'Syntax check'
-        continue-on-error: '${{ matrix.env.experimental }}'
+      - name: 'Install dependencies'
         run: |
           composer install --prefer-dist
+
+      - name: 'Run PHPUnit'
+        continue-on-error: '${{ matrix.env.experimental }}'
+        run: |
           vendor/bin/phpunit

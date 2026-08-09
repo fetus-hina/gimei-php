@@ -36,9 +36,8 @@ class DictionaryTest extends TestCase
         $dict = new Dictionary(__DIR__ . '/dictionary-test-valid.json');
         foreach (range(1, 20) as $i) {
             $ret = $dict->getOneOfFirstName(Gender::MALE);
-            $this->assertTrue(is_array($ret));
-            $this->assertTrue(count($ret) === 3);
-            $this->assertTrue($ret[0] === '太郎' || $ret[0] === '次郎'); // 花子とか返ってきたらダメ
+            $this->assertCount(4, $ret);
+            $this->assertContains($ret[0], ['太郎', '次郎']); // 花子とか返ってきたらダメ
         }
     }
 
@@ -47,9 +46,8 @@ class DictionaryTest extends TestCase
         $dict = new Dictionary(__DIR__ . '/dictionary-test-valid.json');
         foreach (range(1, 20) as $i) {
             $ret = $dict->getOneOfFirstName(Gender::FEMALE);
-            $this->assertTrue(is_array($ret));
-            $this->assertTrue(count($ret) === 3);
-            $this->assertTrue($ret[0] === '花子' || $ret[0] === '陽菜'); // 太郎とか返ってきたらダメ
+            $this->assertCount(4, $ret);
+            $this->assertContains($ret[0], ['花子', '陽菜']); // 太郎とか返ってきたらダメ
         }
     }
 
@@ -65,9 +63,8 @@ class DictionaryTest extends TestCase
         $dict = new Dictionary(__DIR__ . '/dictionary-test-valid.json');
         foreach (range(1, 20) as $i) {
             $ret = $dict->getOneOfLastName();
-            $this->assertTrue(is_array($ret));
-            $this->assertTrue(count($ret) === 3);
-            $this->assertTrue($ret[0] === '相沢' || $ret[0] === '鈴木');
+            $this->assertCount(4, $ret);
+            $this->assertContains($ret[0], ['相沢', '鈴木']);
         }
     }
 }

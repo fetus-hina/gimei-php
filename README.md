@@ -3,7 +3,7 @@ Gimei-PHP
 
 [![License](https://poser.pugx.org/jp3cki/gimei/license)](https://packagist.org/packages/jp3cki/gimei)
 [![Latest Stable Version](https://poser.pugx.org/jp3cki/gimei/v/stable)](https://packagist.org/packages/jp3cki/gimei)
-[![Build Status](https://travis-ci.org/fetus-hina/gimei-php.svg?branch=master)](https://travis-ci.org/fetus-hina/gimei-php)
+[![CI](https://github.com/fetus-hina/gimei-php/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/fetus-hina/gimei-php/actions/workflows/ci.yml)
 
 gimei-php は日本人の名前や、日本の住所をランダムに返すライブラリ [gimei](https://github.com/willnet/gimei) を PHP 用ライブラリにポーティングしたものです。
 テストデータの作成時などに使用します。
@@ -18,7 +18,7 @@ https://github.com/willnet/gimei
 
 ### 必須環境 ###
 
-- PHP 7.1 以上
+- PHP 8.2 以上
 - `json` 拡張モジュール
 
 
@@ -77,12 +77,15 @@ echo $gimei . "\n";                     // "相沢 陽菜"
 echo $gimei->kanji . "\n";              // "相沢 陽菜"
 echo $gimei->hiragana . "\n";           // "あいざわ ひな"
 echo $gimei->katakana . "\n";           // "アイザワ ヒナ"
+echo $gimei->romaji . "\n";             // "Hina Aizawa" (ローマ字のみ「名 姓」の順)
 echo $gimei->last->kanji . "\n";        // "相沢"
 echo $gimei->last->hiragana . "\n";     // "あいざわ"
 echo $gimei->last->katakana . "\n";     // "アイザワ"
+echo $gimei->last->romaji . "\n";       // "Aizawa"
 echo $gimei->first->kanji . "\n";       // "陽菜"
 echo $gimei->first->hiragana . "\n";    // "ひな"
 echo $gimei->first->katakana . "\n";    // "ヒナ"
+echo $gimei->first->romaji . "\n";      // "Hina"
 
 echo $gimei->isMale . "\n";             // false (echo の挙動上 "0")
 echo $gimei->isFemale . "\n";           // true  ( 〃           "1")
@@ -124,7 +127,7 @@ echo $gimei->kanji . "\n";          // "山田 太郎"
 
 ### 住所ランダムに返す ###
 
-都道府県、区、市、町を組み合わせた住所情報を漢字、ひらがな、カタカナで取得することができます。
+都道府県、区、市、町を組み合わせた住所情報を漢字、ひらがな、カタカナ、ローマ字で取得することができます。
 （ほとんどの場合、実在しない住所が生成されます。例えば `東京都` `名古屋市中村区` `首里末吉町` など）
 
 ```php
@@ -138,18 +141,23 @@ echo $addr . "\n";                          // 岡山県大島郡大和村稲木
 echo $addr->kanji . "\n";                   // 岡山県大島郡大和村稲木町
 echo $addr->hiragana . "\n";                // おかやまけんおおしまぐんやまとそんいなぎちょう
 echo $addr->katakana . "\n";                // オカヤマケンオオシマグンヤマトソンイナギチョウ
+echo $addr->romaji . "\n";                  // Okayamaken Ooshimagunyamatoson Inagichou
+                                            // (ローマ字のみ空白区切り)
 
 echo $addr->prefecture->kanji . "\n";       // 岡山県
 echo $addr->prefecture->hiragana . "\n";    // おかやまけん
 echo $addr->prefecture->katakana . "\n";    // オカヤマケン
+echo $addr->prefecture->romaji . "\n";      // Okayamaken
 
 echo $addr->city->kanji . "\n";             // 大島郡大和村
 echo $addr->city->hiragana . "\n";          // おおしまぐんやまとそん
 echo $addr->city->katakana . "\n";          // オオシマグンヤマトソン
+echo $addr->city->romaji . "\n";            // Ooshimagunyamatoson
 
 echo $addr->town->kanji . "\n";             // 稲木町
 echo $addr->town->hiragana . "\n";          // いなぎちょう
 echo $addr->town->katakana . "\n";          // イナギチョウ
+echo $addr->town->romaji . "\n";            // Inagichou
 ```
 
 住所のデータは `gimei` (オリジナル)プロジェクトの `addresses.yml` から JSON に変換して利用しています。
@@ -207,6 +215,16 @@ SOFTWARE.
 
 CHANGE LOG
 ----------
+
+- v3.0.0
+    - 最小要求バージョンを PHP 8.2 に更新
+    - 名前・住所データを本家 gimei v1.7.0 に更新
+        - 住所データの自治体変更に追従しました（富谷町→富谷市、浜松市の区再編、篠山市→丹波篠山市、那珂川町→那珂川市）
+    - ローマ字表記に対応しました（`$gimei->romaji`, `$addr->romaji` 等）
+        - 本家に合わせ、名前のローマ字は「名 姓」の順、住所のローマ字は各要素を空白区切りで連結します
+    - **非互換**: `DataUnit` （`NameUnit` / `AddressUnit`）のコンストラクタが
+      `[漢字, かな, カナ, ローマ字]` の4要素を要求するようになりました
+    - 依存ライブラリアップデート（PHPUnit 11, PHPStan 2, PHP_CodeSniffer 4）
 
 - v2.0.1 - 2022-01-15
     - 依存ライブラリアップデート

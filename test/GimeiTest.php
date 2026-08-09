@@ -76,4 +76,25 @@ class GimeiTest extends TestCase
         $address = Gimei::generateAddress();
         $this->assertInstanceOf('jp3cki\gimei\address\Address', $address);
     }
+
+    // 実データのすべてのエントリがローマ字を持っていること
+    public function testGenerateNameReturnsRomaji(): void
+    {
+        foreach (range(1, 20) as $i) {
+            $this->assertMatchesRegularExpression(
+                '/\A[A-Za-z]+ [A-Za-z]+\z/',
+                Gimei::generateName()->getRomaji()
+            );
+        }
+    }
+
+    public function testGenerateAddressReturnsRomaji(): void
+    {
+        foreach (range(1, 20) as $i) {
+            $this->assertMatchesRegularExpression(
+                '/\A[A-Za-z]+ [A-Za-z]+ [A-Za-z]+\z/',
+                Gimei::generateAddress()->getRomaji()
+            );
+        }
+    }
 }

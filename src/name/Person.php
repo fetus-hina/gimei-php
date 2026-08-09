@@ -26,6 +26,7 @@ namespace jp3cki\gimei\name;
  * @property-read string $hiragana フルネームひらがな表記
  * @property-read string $kanji フルネーム漢字表記
  * @property-read string $katakana フルネームカタカナ表記
+ * @property-read string $romaji フルネームローマ字表記
  */
 class Person
 {
@@ -93,6 +94,22 @@ class Person
     }
 
     /**
+     * ローマ字表記を取得
+     *
+     * 漢字・かな・カナと異なり、本家 gimei に合わせて「名 姓」の順で連結する
+     *
+     * @return string
+     */
+    public function getRomaji()
+    {
+        return sprintf(
+            '%s %s',
+            $this->firstName->getRomaji(),
+            $this->lastName->getRomaji()
+        );
+    }
+
+    /**
      * 性別を取得。男性なら true
      *
      * @return bool
@@ -157,6 +174,9 @@ class Person
 
             case 'katakana':
                 return $this->getKatakana();
+
+            case 'romaji':
+                return $this->getRomaji();
 
             case 'isMale':
             case 'is_male':

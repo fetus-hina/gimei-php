@@ -12,10 +12,6 @@ use jp3cki\gimei\Exception;
 
 /**
  * データファイルを読み込み保持するクラス
- *
- * @property-read array $prefectures
- * @property-read array $cities
- * @property-read array $towns
  */
 class Dictionary
 {

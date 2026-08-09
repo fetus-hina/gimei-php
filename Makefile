@@ -7,7 +7,7 @@ install-third-party:
 
 .PHONY: test
 test: vendor check-style
-	vendor/bin/phpunit
+	php -d zend.assertions=1 vendor/bin/phpunit
 
 .PHONY: check-style
 check-style: check-style-syntax check-style-phpcs check-style-phpstan
@@ -22,7 +22,7 @@ check-style-phpcs: vendor
 
 .PHONY: check-style-phpstan
 check-style-phpstan: vendor
-	vendor/bin/phpstan analyze --level=8 src test
+	vendor/bin/phpstan analyze
 
 .PHONY: fix-style
 fix-style: vendor

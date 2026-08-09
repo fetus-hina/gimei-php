@@ -15,6 +15,7 @@ namespace jp3cki\gimei;
  * @property-read string $kanji 漢字表記
  * @property-read string $hiragana かな表記
  * @property-read string $katakana カナ表記
+ * @property-read string $romaji ローマ字表記
  */
 class DataUnit
 {
@@ -37,17 +38,24 @@ class DataUnit
     private $katakana;
 
     /**
+     * ローマ字表記
+     * @var string
+     */
+    private $romaji;
+
+    /**
      * コンストラクタ
      *
-     * @param string[] $data [漢字, かな, カナ] の配列
+     * @param string[] $data [漢字, かな, カナ, ローマ字] の配列
      */
     public function __construct(array $data)
     {
-        assert(count($data) === 3);
+        assert(count($data) === 4);
 
         $this->kanji = (string)array_shift($data);
         $this->hiragana = (string)array_shift($data);
         $this->katakana = (string)array_shift($data);
+        $this->romaji = (string)array_shift($data);
     }
 
     /**
@@ -81,6 +89,16 @@ class DataUnit
     }
 
     /**
+     * ローマ字表記を取得
+     *
+     * @return string
+     */
+    public function getRomaji()
+    {
+        return $this->romaji;
+    }
+
+    /**
      * @return string
      */
     public function __toString()
@@ -103,6 +121,9 @@ class DataUnit
 
             case 'katakana':
                 return $this->getKatakana();
+
+            case 'romaji':
+                return $this->getRomaji();
         }
 
         return null;

@@ -8,29 +8,25 @@ use jp3cki\gimei\test\TestCase;
 
 class PersonTest extends TestCase
 {
-    /** @var Person */
-    private $male;
+    private Person $male;
 
-    /** @var Person */
-    private $female;
+    private Person $female;
 
-    /** @return void */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->male = new Person(
-            new NameUnit(['太郎', 'たろう', 'タロウ']),
-            new NameUnit(['山田', 'やまだ', 'ヤマダ']),
+            new NameUnit(['太郎', 'たろう', 'タロウ', 'Tarou']),
+            new NameUnit(['山田', 'やまだ', 'ヤマダ', 'Yamada']),
             true
         );
         $this->female = new Person(
-            new NameUnit(['陽菜', 'ひな', 'ヒナ']),
-            new NameUnit(['相沢', 'あいざわ', 'アイザワ']),
+            new NameUnit(['陽菜', 'ひな', 'ヒナ', 'Hina']),
+            new NameUnit(['相沢', 'あいざわ', 'アイザワ', 'Aizawa']),
             false
         );
     }
 
-    /** @return void */
-    public function tearDown()
+    protected function tearDown(): void
     {
         unset($this->male);
         unset($this->female);
@@ -58,6 +54,15 @@ class PersonTest extends TestCase
         $this->assertEquals('ヤマダ タロウ', $this->male->katakana);
         $this->assertEquals('アイザワ ヒナ', $this->female->getKatakana());
         $this->assertEquals('アイザワ ヒナ', $this->female->katakana);
+    }
+
+    // 漢字・かな・カナと違い「名 姓」の順になる
+    public function testGetRomaji(): void
+    {
+        $this->assertEquals('Tarou Yamada', $this->male->getRomaji());
+        $this->assertEquals('Tarou Yamada', $this->male->romaji);
+        $this->assertEquals('Hina Aizawa', $this->female->getRomaji());
+        $this->assertEquals('Hina Aizawa', $this->female->romaji);
     }
 
     public function testIsMale(): void

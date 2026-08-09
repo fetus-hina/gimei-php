@@ -7,21 +7,17 @@ use jp3cki\gimei\test\TestCase;
 
 class NameUnitTest extends TestCase
 {
-    /** @var NameUnit */
-    private $obj1;
+    private NameUnit $obj1;
 
-    /** @var NameUnit */
-    private $obj2;
+    private NameUnit $obj2;
 
-    /** @return void */
-    public function setUp()
+    protected function setUp(): void
     {
-        $this->obj1 = new NameUnit([ '山田', 'やまだ', 'ヤマダ' ]);
-        $this->obj2 = new NameUnit([ '太郎', 'たろう', 'タロウ' ]);
+        $this->obj1 = new NameUnit([ '山田', 'やまだ', 'ヤマダ', 'Yamada' ]);
+        $this->obj2 = new NameUnit([ '太郎', 'たろう', 'タロウ', 'Tarou' ]);
     }
 
-    /** @return void */
-    public function tearDown()
+    protected function tearDown(): void
     {
         unset($this->obj1);
         unset($this->obj2);
@@ -49,6 +45,14 @@ class NameUnitTest extends TestCase
         $this->assertEquals('ヤマダ', $this->obj1->katakana);
         $this->assertEquals('タロウ', $this->obj2->getKatakana());
         $this->assertEquals('タロウ', $this->obj2->katakana);
+    }
+
+    public function testGetRomaji(): void
+    {
+        $this->assertEquals('Yamada', $this->obj1->getRomaji());
+        $this->assertEquals('Yamada', $this->obj1->romaji);
+        $this->assertEquals('Tarou', $this->obj2->getRomaji());
+        $this->assertEquals('Tarou', $this->obj2->romaji);
     }
 
     public function testStringify(): void
