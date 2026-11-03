@@ -1,10 +1,12 @@
 {
     "name": "jp3cki/gimei",
-    "type": "library",
     "description": "random Japanese name and address generator",
-    "keywords": ["gimei"],
     "license": "MIT",
+    "type": "library",
     "version": "3.0.0",
+    "keywords": [
+        "gimei"
+    ],
     "authors": [
         {
             "name": "AIZAWA Hina",
@@ -15,14 +17,14 @@
         }
     ],
     "require": {
-        "php":  ">= 8.2",
+        "php": ">= 8.2",
         "ext-json": "*"
     },
     "require-dev": {
-        "phpstan/phpstan": "^2.2.8",
-        "phpunit/phpunit": "^11.5.56",
+        "phpstan/phpstan": "^2.3.4",
+        "phpunit/phpunit": "^11.5.57",
         "squizlabs/php_codesniffer": "^4.0.4",
-        "symfony/yaml": "^7.4.15"
+        "symfony/yaml": "^7.4.22"
     },
     "autoload": {
         "psr-4": {
